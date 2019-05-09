@@ -6,6 +6,8 @@
     "jsx": "preserve",
     "lib": [
       "dom",
+      "es2015",
+      "es2016",
       "es2017"
     ],
     "module": "esnext",
@@ -19,6 +21,10 @@
     "sourceMap": true,
     "strict": true,
     "target": "esnext",
-    "alwaysStrict": true
+    "alwaysStrict": true,
+    "paths": {
+      "lib/*": [ "./lib/*" ],
+      "components/*": [ "./components/*" ],
+    }
   }
 }

@@ -1,6 +1,6 @@
-import App, { Container, NextAppContext } from 'next/app'
+import App, { Container, NextAppContext } from 'next/app';
 
-import Page from '../components/Page'
+import Page from '../components/Page';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: NextAppContext) {
@@ -26,4 +26,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp
+export default MyApp;

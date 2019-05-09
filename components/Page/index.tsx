@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import * as React from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 import Meta from '../Meta'
@@ -72,7 +72,7 @@ const GlobalStyle = createGlobalStyle<StyledProps>`
 
 
 export interface IPageProps {
-  children: ReactNode
+  children: React.ReactNode
 }
 
 const Page: React.SFC<IPageProps> = ({ children }) => (
