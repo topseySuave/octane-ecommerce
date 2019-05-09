@@ -1,8 +1,12 @@
-import * as React from 'react'
-import {Home} from '../src/components/Home'
-import {Layout} from '../src/components/Layout'
+import Link from 'next/link'
 
-export default props =>
-  <Layout>
-    <Home/>
-  </Layout>
+import Header from '../components/Header'
+
+export default () => (
+  <div>
+    <Header title='Welcome!' />
+    <h2>Great Stuff</h2>
+    <p>This React template uses Next.JS, TypeScript and `styled-components`</p>
+    <p>Read more on the <Link href='/about'><a>about page</a></Link>!</p>
+  </div>
+)
