@@ -1,12 +1,13 @@
 import Link from 'next/link';
+import { Button } from 'antd';
 
-import Header from '../components/Header';
+import './index.scss';
 
 export default () => (
   <div>
-    <Header title='Welcome!' />
     <h2>Great Stuff</h2>
-    <p>This React template uses Next.JS, TypeScript and `styled-components`</p>
+    <Button type="primary">Button</Button>
+    <p>This React template uses Next, TypeScript and `styled-components`</p>
     <p>Read more on the <Link href='/about'><a>about page</a></Link>!</p>
   </div>
 )
