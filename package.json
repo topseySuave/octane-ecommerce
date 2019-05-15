@@ -1,8 +1,8 @@
 {
-  "name": "next-typescript-starter",
-  "version": "0.1.0",
+  "name": "octane-ecommerce",
+  "version": "0.0.1",
   "author": "Gabriel Micah",
-  "repository": "git@github.com:topseySuave/next-typescript-starter.git",
+  "repository": "git@github.com:topseySuave/octane-ecommerce.git",
   "license": "MIT",
   "private": true,
   "scripts": {
