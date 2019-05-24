@@ -1,5 +1,10 @@
-@import 'semantic-ui-css/semantic.min.css';
+@import 'colors';
+@import '~antd/dist/antd.min.css';
 
-.container {
-  background: transparent;
+body {
+  color: black !important;
+}
+
+.ant-layout, .ant-layout-footer {
+  background-color: $layoutBackground !important;
 }

@@ -19,6 +19,7 @@ module.exports = withPlugins([
   target: 'server',
   webpack: (config, { dev }) => {
     config.resolve.alias.lib = path.resolve('lib');
+    config.resolve.alias.assets = path.resolve('assets');
     config.resolve.alias.components = path.resolve('components');
     return config;
   },
