@@ -1,0 +1,10 @@
+@import 'colors';
+@import '~antd/dist/antd.min.css';
+
+body {
+  color: black !important;
+}
+
+.ant-layout, .ant-layout-footer {
+  background-color: $layoutBackground !important;
+}

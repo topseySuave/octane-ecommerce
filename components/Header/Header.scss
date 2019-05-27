@@ -1,0 +1,63 @@
+@import 'colors';
+@import 'constants';
+
+.ant-layout-header {
+  height: auto !important;
+}
+
+.main-header-container {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: $headerBackground !important;
+  box-shadow: $shadow;
+
+  .main-header {
+    display: flex;
+
+    .logo {
+      width: 20%;
+      height: 31px;
+      margin: 16px 28px 16px 0;
+      
+      svg {
+        flex-basis: 55%;
+      }
+    }
+
+    .icon-cart {
+      font-size: $cartFontSize !important;
+    }
+
+    .ant-badge {
+      position: absolute !important;
+      right: 20px !important;
+    }
+  }
+
+  .mini-header {
+    width: 100%;
+    display: flex;
+    height: (64px / 1.5) !important;
+    background: transparent !important;
+    justify-content: space-between;
+    border-top: 1px solid $headerBorderColor;
+  }
+
+  .ant-back-top {
+    bottom: 100px;
+
+    .ant-back-top-inner {
+      width: max-content;
+      padding: 15px;
+      line-height: 40px;
+      border-radius: 4px;
+      background-color: #1088e9;
+      color: #fff;
+      text-align: center;
+    }
+  }
+}

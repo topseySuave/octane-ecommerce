@@ -1,20 +1,17 @@
 import { Layout } from 'antd';
-import Header from 'components/Header';
-import Content from 'components/Content';
-import CallToAction from 'components/ui/CallToAction';
+import Profile from 'components/Profile';
 import OctFooter from 'components/Footer';
-
 import './index.scss';
 import Head from 'next/head';
+import Header from 'components/Header';
 
 export default () => (
   <Layout>
     <Head>
-      <title>Octane - Ecommerce</title>
+      <title>Account Details | Octane - Ecommerce</title>
     </Head>
     <Header />
-    <Content />
-    <CallToAction />
+    <Profile />
     <OctFooter />
   </Layout>
 );
