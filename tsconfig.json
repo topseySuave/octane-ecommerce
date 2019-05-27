@@ -26,6 +26,9 @@
       "lib/*": [
         "./lib/*"
       ],
+      "assets/*": [
+        "./assets/*"
+      ],
       "components/*": [
         "./components/*"
       ]

@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700,800');
+@import 'constants';
+
+body {
+  font-family: $fontFamily !important;
+}
+
+@mixin transition ($value) {
+  transition: $value;
+  -webkit-transition: $value;
+  -moz-transition: $value;
+}
