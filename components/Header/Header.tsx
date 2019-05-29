@@ -5,14 +5,14 @@ import OctDrawer from 'components/ui/Drawer';
 import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
 import Logo from 'components/ui/Logo';
 import './Header.scss';
-import Link from 'next/Link';
+import { Link } from 'lib/routes';
 const { Header } = Layout;
 
 const LayoutHeader: React.SFC = () => {
   const menu = () => (
     <Menu>
       <Menu.Item key="1">
-        <Link href="/signin">
+        <Link prefetch href="/signin">
           <a>
             <Icon type="login" className="signin" />{'  '}
             Login
@@ -21,7 +21,7 @@ const LayoutHeader: React.SFC = () => {
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item key="4">
-        <Link href="/signup">
+        <Link prefetch href="/signup">
           <a>
             <Icon type="user-add" className="signup" />{'   '}
             Join Octane and Shop
@@ -35,7 +35,7 @@ const LayoutHeader: React.SFC = () => {
     <Header className="main-header-container">
       <div className="main-header">
         <div className="logo">
-          <Link href="/">
+          <Link prefetch href="/">
             <a><Logo /></a>
           </Link>
         </div>

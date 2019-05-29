@@ -1,4 +1,5 @@
 const sass = require('@zeit/next-sass');
+const typescript = require('@zeit/next-typescript');
 const withPlugins = require('next-compose-plugins');
 const path = require('path');
 
@@ -13,6 +14,7 @@ module.exports = withPlugins([
       includePaths: ["styles"]
     },
   }],
+  typescript
 ], {
   target: 'server',
   webpack: (config, { dev }) => {

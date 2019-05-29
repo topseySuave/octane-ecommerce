@@ -31,7 +31,7 @@ const Profile = () => {
               <SavedItems />
             </TabPane>
           </Tabs>
-          <Link href="/logout?redirect=<url>">
+          <Link prefetch href="/logout?redirect=<url>">
             <a>
               <Button type="link">Log out</Button>
             </a>

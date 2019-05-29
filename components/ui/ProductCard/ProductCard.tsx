@@ -1,5 +1,5 @@
 import { Card, Button, Typography, Avatar } from "antd";
-import Link from "next/Link";
+import { Link } from 'lib/routes';
 
 import './ProductCard.scss';
 
@@ -8,7 +8,7 @@ const { Meta } = Card;
 
 const ProductCard = () => (
   <div className="oct-card">
-    <Link href="/shop?id=product" as="/shop/product.html">
+    <Link prefetch route="/shop/product-page">
       <Card
         hoverable
         style={{ width: 220 }}
