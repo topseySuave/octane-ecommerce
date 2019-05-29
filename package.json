@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "antd": "^3.18.2",
-    "express": "^4.17.1",
     "next": "^8.1.0",
     "next-routes": "^1.4.2",
     "react": "^16.8.6",
