@@ -18,7 +18,7 @@ const FeaturedProductList = () => (
 
 const LayoutContent = () => (
   <Content style={{ marginTop: DISTANCE_FROM_TOP }}>
-    <Carousel data={ONLINE_ASSET_IMAGES} type="image" />
+    <Carousel data={ONLINE_ASSET_IMAGES} type="image" withDetail />
     <Content style={{ padding: '50px 100px', marginTop: 20 }}>
       <DiscountCards />
       <div className="product-list-container">

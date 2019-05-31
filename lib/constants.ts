@@ -13,3 +13,5 @@ export const ONLINE_ASSET_IMAGES = [
   'http://fab.oxygenna.com/fashion/wp-content/uploads/sites/2/revslider/fab/slide-2-full.jpg',
   'http://fab.oxygenna.com/fashion/wp-content/uploads/sites/2/revslider/fab/slide-4-notinclude.jpg',
 ];
+
+export const ONLINE_DEMO_PRODUCT_IMAGES = 'https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_SS_front_grande.jpg?v=1460557226';

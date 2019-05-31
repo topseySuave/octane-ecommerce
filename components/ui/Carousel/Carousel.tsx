@@ -7,22 +7,23 @@ import { Link } from "lib/routes";
 interface Prop {
   data: Array<any>;
   type?: "image" | "text";
+  withDetail?: boolean;
 }
 
-const OctCarousel: React.SFC<Prop> = ({ data }) => (
+const OctCarousel: React.SFC<Prop> = ({ data, withDetail }) => (
   <React.Fragment>
     <Carousel autoplay style={{ position: "relative" }}>
       {data.map((slide, index) => {
         return <img key={index} src={slide} alt={`octane-${slide}`} />;
       })}
     </Carousel>
-    <div className="carousel-detail">
+    {withDetail && <div className="carousel-detail">
       <Link prefetch route="/shop">
         <Button type="danger" shape="round" icon="shopping" size="large">
           Get Shopping
         </Button>
       </Link>
-    </div>
+    </div>}
   </React.Fragment>
 );
 
