@@ -9,7 +9,9 @@
     "dev": "node server/",
     "next": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "ts:check": "tsc -p ./tsconfig.json --noEmit",
+    "test": "jest --coverage --no-cache --config=__tests__/config/jest.config.js"
   },
   "dependencies": {
     "antd": "^3.18.2",
