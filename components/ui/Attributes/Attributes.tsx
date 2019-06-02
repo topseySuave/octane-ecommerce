@@ -1,9 +1,14 @@
+import React from 'react';
 import { Typography, Radio, InputNumber, Button } from 'antd';
 import './Attributes.scss';
 
 const { Title } = Typography;
 
-const Attributes = () => {
+interface Props {
+  product?: boolean;
+}
+
+const Attributes: React.SFC<Props> = ({ product }) => {
   const onChange = (value: any) => {
     console.log('changed', value);
   };
@@ -34,12 +39,16 @@ const Attributes = () => {
           <Radio.Button value="7" >XL</Radio.Button>
         </Radio.Group>
       </div>
-      <div className="oct-attributes oct-quantity">
+      {product && <div className="oct-attributes oct-quantity">
         <Title level={4} style={{ color: '#CCC' }}>Quantity</Title>
         <InputNumber min={1} max={12} defaultValue={2} onChange={onChange} />
-      </div>
-      <Button type="danger" shape="round" icon="shopping-cart" size="large">Add to cart</Button>
-      <Button type="link" icon="heart">Save for Later</Button>
+      </div>}
+      {product && 
+        <>
+          <Button type="danger" shape="round" icon="shopping-cart" size="large">Add to cart</Button>
+          <Button type="link" icon="heart">Save for Later</Button>
+        </>
+      }
     </>
   );
 };

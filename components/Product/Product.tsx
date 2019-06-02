@@ -28,14 +28,13 @@ const Product = () => {
                         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus sequi saepe enim maiores dolorem tenetur, officia aut vero eaque autem dignissimos accusamus quasi, reiciendis aliquam ea! Mollitia at accusantium dolorem dolorum. Doloremque, architecto asperiores. Sit assumenda nesciunt neque ducimus maiores omnis ad voluptatum eius quis vel laboriosam dolores veniam dicta dolorem veritatis asperiores, itaque architecto magnam aspernatur a quibusdam voluptates iste. Eveniet ratione aspernatur iste error soluta ab amet odio rerum eum maxime, quis, nihil quisquam, delectus quam nam sequi. Repellat culpa ut eum distinctio neque commodi quam similique placeat, voluptatum aut ipsum hic alias aliquam libero corporis nam error.
                       </Text>
                     </div>
-                    <Attributes />
+                    <Attributes product />
                   </div>
                 </Col>
               </Row>
             </Col>
           </Row>
         </div>
-        Hello world
       </div>
     </Content>
   );
