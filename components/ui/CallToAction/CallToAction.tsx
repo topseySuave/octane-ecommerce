@@ -2,8 +2,9 @@ import React from "react";
 
 import "./CallToAction.scss";
 import { Button } from "antd";
-import { Link } from "lib/routes";
+import routes from "lib/routes";
 
+const { Link } = routes;
 const backgroundImage =
   "http://fab.oxygenna.com/fashion/wp-content/uploads/sites/2/2016/02/bg9-notinclude.jpg";
 

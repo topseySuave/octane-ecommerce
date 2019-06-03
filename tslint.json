@@ -11,9 +11,10 @@
     "interface-name": [false],
     "jsx-boolean-value": [true, "never"],
     "jsx-no-multiline-js": [false],
+    "jsx-no-lambda": [false],
     "variable-name": [true, "ban-keywords"],
     "object-shorthand-properties-first": [false],
-    "no-console": [false]
+    "no-console": [false],
   },
   "rulesDirectory": [],
   "linterOptions": {

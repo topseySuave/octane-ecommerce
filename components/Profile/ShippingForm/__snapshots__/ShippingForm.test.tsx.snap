@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Orders Renders with user profile tabs settings 1`] = `ShallowWrapper {}`;

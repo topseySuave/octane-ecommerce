@@ -1,0 +1,449 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart View Renders with horizontal card only 1`] = `
+Array [
+  <h3
+    aria-label={null}
+    className="ant-typography"
+    style={
+      Object {
+        "WebkitLineClamp": null,
+      }
+    }
+  >
+    Saved Item(s)
+  </h3>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+  <div
+    className="ant-card oct-horizontal-card ant-card-bordered"
+    style={
+      Object {
+        "marginTop": 18,
+      }
+    }
+  >
+    <div
+      className="ant-card-body"
+      style={Object {}}
+    >
+      <div
+        className="ant-card-meta"
+      >
+        <div
+          className="ant-card-meta-avatar"
+        >
+          <span
+            className="ant-avatar ant-avatar-circle ant-avatar-image"
+            style={Object {}}
+          >
+            <img
+              onError={[Function]}
+              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+            />
+          </span>
+        </div>
+        <div
+          className="ant-card-meta-detail"
+        >
+          <div
+            className="ant-card-meta-title"
+          >
+            Card title
+          </div>
+          <div
+            className="ant-card-meta-description"
+          >
+            This is the description
+          </div>
+        </div>
+      </div>
+      <button
+        className="ant-btn ant-btn-link"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </div>
+  </div>,
+]
+`;

@@ -1,11 +1,11 @@
-import { Layout, Card, Tabs, Typography, Button } from "antd";
-import { DISTANCE_FROM_TOP, LINE_HEIGHT } from "lib/constants";
-import Link from "next/Link";
-import ShippingForm from './ShippingForm';
+import { Button, Card, Layout, Tabs, Typography } from 'antd';
+import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
+import Link from 'next/link';
 import AccountDetailForm from './AccountDetailForm';
 import Orders from './Orders';
-import SavedItems from './SavedItems';
 import './Profile.scss';
+import SavedItems from './SavedItems';
+import ShippingForm from './ShippingForm';
 
 const { Title } = Typography;
 const { Content } = Layout;
@@ -40,6 +40,6 @@ const Profile = () => {
       </div>
     </Content>
   );
-}
+};
 
 export default Profile;

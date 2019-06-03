@@ -8,7 +8,8 @@ module.exports = {
   moduleNameMapper: {
     '^components/(.*)$': '<rootDir>/components/$1',
     '^lib/(.*)$': '<rootDir>/lib/$1',
-    '\\.(scss)$': 'identity-obj-proxy'
+    '\\.(scss)$': 'identity-obj-proxy',
+    "^lodash-es$": "lodash"
   },
   rootDir: '../../',
   setupFiles: [

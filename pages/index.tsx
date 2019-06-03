@@ -1,11 +1,11 @@
 import { Layout } from 'antd';
-import Header from 'components/Header';
 import Content from 'components/Content';
-import CallToAction from 'components/ui/CallToAction';
 import OctFooter from 'components/Footer';
+import Header from 'components/Header';
+import CallToAction from 'components/ui/CallToAction';
 
-import './index.scss';
 import Head from 'next/head';
+import './index.scss';
 
 export default () => (
   <Layout>

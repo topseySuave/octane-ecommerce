@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpForm Renders with sign up form 1`] = `ShallowWrapper {}`;

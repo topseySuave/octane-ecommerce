@@ -2,8 +2,9 @@ import React from "react";
 import { Carousel, Button } from "antd";
 
 import "./Carousel.scss";
-import { Link } from "lib/routes";
+import routes from "lib/routes";
 
+const { Link } = routes;
 interface Prop {
   data: Array<any>;
   type?: "image" | "text";

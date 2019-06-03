@@ -1,4 +1,4 @@
-import { Input, Row, Col, Button, Typography } from "antd";
+import { Button, Col, Input, Row, Typography } from 'antd';
 import './AccountDetailForm.scss';
 
 const { Title } = Typography;
@@ -13,7 +13,7 @@ const AccountDetailForm = () => {
           <Input
             placeholder="Enter Name"
             allowClear
-            onChange={() => console.log("e")}
+            onChange={() => console.log('e')}
           />
         </Col>
         <Col lg={12}>
@@ -21,28 +21,28 @@ const AccountDetailForm = () => {
             type="email"
             placeholder="Enter Email Address"
             allowClear
-            onChange={() => console.log("e")}
+            onChange={() => console.log('e')}
           />
         </Col>
         <Col lg={8}>
           <Input
             placeholder="Day Phone"
             allowClear
-            onChange={() => console.log("e")}
+            onChange={() => console.log('e')}
           />
         </Col>
         <Col lg={8}>
           <Input
             placeholder="Eve Phone"
             allowClear
-            onChange={() => console.log("e")}
+            onChange={() => console.log('e')}
           />
         </Col>
         <Col lg={8}>
           <Input
             placeholder="Mob Phone"
             allowClear
-            onChange={() => console.log("e")}
+            onChange={() => console.log('e')}
           />
         </Col>
         <Button type="primary" size="large">Submit</Button>

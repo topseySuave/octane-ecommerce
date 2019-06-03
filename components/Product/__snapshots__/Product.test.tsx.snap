@@ -1,0 +1,671 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product Renders the detail of a product 1`] = `
+<main
+  className="ant-layout-content"
+  style={
+    Object {
+      "marginTop": 106.66666666666666,
+    }
+  }
+>
+  <div
+    className="product-container"
+  >
+    <div
+      className="product-preview"
+    >
+      <div
+        className="ant-row"
+      >
+        <div
+          className="ant-col ant-col-lg-24"
+        >
+          <div
+            className="ant-row"
+          >
+            <div
+              className="ant-col ant-col-lg-12"
+            >
+              <div
+                className="product-images"
+              >
+                <img
+                  alt="product-images"
+                  src="https://cdn.shopify.com/s/files/1/0340/2849/products/TC2016_SS_front_grande.jpg?v=1460557226"
+                />
+              </div>
+            </div>
+            <div
+              className="ant-col ant-col-lg-12"
+            >
+              <div
+                className="product-details"
+              >
+                <h2
+                  aria-label={null}
+                  className="ant-typography"
+                  style={
+                    Object {
+                      "WebkitLineClamp": null,
+                    }
+                  }
+                >
+                  Cananda football Jersey T-shirt for men
+                </h2>
+                <h3
+                  aria-label={null}
+                  className="ant-typography"
+                  style={
+                    Object {
+                      "WebkitLineClamp": null,
+                      "color": "red",
+                    }
+                  }
+                >
+                  $13.45
+                </h3>
+                <div
+                  style={
+                    Object {
+                      "marginBottom": 40,
+                    }
+                  }
+                >
+                  <span
+                    aria-label={null}
+                    className="ant-typography"
+                    style={
+                      Object {
+                        "WebkitLineClamp": null,
+                      }
+                    }
+                  >
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus sequi saepe enim maiores dolorem tenetur, officia aut vero eaque autem dignissimos accusamus quasi, reiciendis aliquam ea! Mollitia at accusantium dolorem dolorum. Doloremque, architecto asperiores. Sit assumenda nesciunt neque ducimus maiores omnis ad voluptatum eius quis vel laboriosam dolores veniam dicta dolorem veritatis asperiores, itaque architecto magnam aspernatur a quibusdam voluptates iste. Eveniet ratione aspernatur iste error soluta ab amet odio rerum eum maxime, quis, nihil quisquam, delectus quam nam sequi. Repellat culpa ut eum distinctio neque commodi quam similique placeat, voluptatum aut ipsum hic alias aliquam libero corporis nam error.
+                  </span>
+                </div>
+                <div
+                  className="oct-attributes"
+                >
+                  <h4
+                    aria-label={null}
+                    className="ant-typography"
+                    style={
+                      Object {
+                        "WebkitLineClamp": null,
+                        "color": "#CCC",
+                      }
+                    }
+                  >
+                    Color
+                  </h4>
+                  <div
+                    className="ant-radio-group ant-radio-group-outline"
+                  >
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#F62F5E",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="1"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#6EB2FB",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="2"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#00D3CA",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="3"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#FE5C07",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="4"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#F8E71C",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="5"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#7ED321",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="6"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                    <label
+                      className="oct-radio-button ant-radio-button-wrapper"
+                      style={
+                        Object {
+                          "backgroundColor": "#9013FE",
+                        }
+                      }
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="7"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="oct-attributes"
+                >
+                  <h4
+                    aria-label={null}
+                    className="ant-typography"
+                    style={
+                      Object {
+                        "WebkitLineClamp": null,
+                        "color": "#CCC",
+                      }
+                    }
+                  >
+                    Size
+                  </h4>
+                  <div
+                    className="ant-radio-group ant-radio-group-outline"
+                  >
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="1"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="2"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="3"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="4"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="5"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="6"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                    <label
+                      className="ant-radio-button-wrapper"
+                    >
+                      <span
+                        className="ant-radio-button"
+                        style={Object {}}
+                      >
+                        <input
+                          checked={false}
+                          className="ant-radio-button-input"
+                          disabled={false}
+                          onBlur={[Function]}
+                          onChange={[Function]}
+                          onFocus={[Function]}
+                          type="radio"
+                          value="7"
+                        />
+                        <span
+                          className="ant-radio-button-inner"
+                        />
+                      </span>
+                      <span>
+                        XL
+                      </span>
+                    </label>
+                  </div>
+                </div>
+                <div
+                  className="oct-attributes oct-quantity"
+                >
+                  <h4
+                    aria-label={null}
+                    className="ant-typography"
+                    style={
+                      Object {
+                        "WebkitLineClamp": null,
+                        "color": "#CCC",
+                      }
+                    }
+                  >
+                    Quantity
+                  </h4>
+                  <div
+                    className="ant-input-number"
+                    style={Object {}}
+                  >
+                    <div
+                      className="ant-input-number-handler-wrap"
+                    >
+                      <span
+                        aria-disabled={false}
+                        aria-label="Increase Value"
+                        className="ant-input-number-handler ant-input-number-handler-up "
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchCancel={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="button"
+                        unselectable="unselectable"
+                      >
+                        <i
+                          aria-label="icon: up"
+                          className="anticon anticon-up ant-input-number-handler-up-inner"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className=""
+                            data-icon="up"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M890.5 755.3L537.9 269.2c-12.8-17.6-39-17.6-51.7 0L133.5 755.3A8 8 0 0 0 140 768h75c5.1 0 9.9-2.5 12.9-6.6L512 369.8l284.1 391.6c3 4.1 7.8 6.6 12.9 6.6h75c6.5 0 10.3-7.4 6.5-12.7z"
+                            />
+                          </svg>
+                        </i>
+                      </span>
+                      <span
+                        aria-disabled={false}
+                        aria-label="Decrease Value"
+                        className="ant-input-number-handler ant-input-number-handler-down "
+                        onMouseDown={[Function]}
+                        onMouseLeave={[Function]}
+                        onMouseUp={[Function]}
+                        onTouchCancel={[Function]}
+                        onTouchEnd={[Function]}
+                        onTouchMove={[Function]}
+                        onTouchStart={[Function]}
+                        role="button"
+                        unselectable="unselectable"
+                      >
+                        <i
+                          aria-label="icon: down"
+                          className="anticon anticon-down ant-input-number-handler-down-inner"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            className=""
+                            data-icon="down"
+                            fill="currentColor"
+                            focusable="false"
+                            height="1em"
+                            viewBox="64 64 896 896"
+                            width="1em"
+                          >
+                            <path
+                              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+                            />
+                          </svg>
+                        </i>
+                      </span>
+                    </div>
+                    <div
+                      aria-valuemax={12}
+                      aria-valuemin={1}
+                      aria-valuenow={2}
+                      className="ant-input-number-input-wrap"
+                      role="spinbutton"
+                    >
+                      <input
+                        autoComplete="off"
+                        className="ant-input-number-input"
+                        max={12}
+                        min={1}
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        onKeyDown={[Function]}
+                        onKeyUp={[Function]}
+                        onMouseUp={[Function]}
+                        required={false}
+                        step={1}
+                        value="2"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button
+                  className="ant-btn ant-btn-danger ant-btn-round ant-btn-lg"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    aria-label="icon: shopping-cart"
+                    className="anticon anticon-shopping-cart"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className=""
+                      data-icon="shopping-cart"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="0 0 1024 1024"
+                      width="1em"
+                    >
+                      <path
+                        d="M922.9 701.9H327.4l29.9-60.9 496.8-.9c16.8 0 31.2-12 34.2-28.6l68.8-385.1c1.8-10.1-.9-20.5-7.5-28.4a34.99 34.99 0 0 0-26.6-12.5l-632-2.1-5.4-25.4c-3.4-16.2-18-28-34.6-28H96.5a35.3 35.3 0 1 0 0 70.6h125.9L246 312.8l58.1 281.3-74.8 122.1a34.96 34.96 0 0 0-3 36.8c6 11.9 18.1 19.4 31.5 19.4h62.8a102.43 102.43 0 0 0-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7h161.1a102.43 102.43 0 0 0-20.6 61.7c0 56.6 46 102.6 102.6 102.6s102.6-46 102.6-102.6c0-22.3-7.4-44-20.6-61.7H923c19.4 0 35.3-15.8 35.3-35.3a35.42 35.42 0 0 0-35.4-35.2zM305.7 253l575.8 1.9-56.4 315.8-452.3.8L305.7 253zm96.9 612.7c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 0 1-31.6 31.6zm325.1 0c-17.4 0-31.6-14.2-31.6-31.6 0-17.4 14.2-31.6 31.6-31.6s31.6 14.2 31.6 31.6a31.6 31.6 0 0 1-31.6 31.6z"
+                      />
+                    </svg>
+                  </i>
+                  <span>
+                    Add to cart
+                  </span>
+                </button>
+                <button
+                  className="ant-btn ant-btn-link"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <i
+                    aria-label="icon: heart"
+                    className="anticon anticon-heart"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className=""
+                      data-icon="heart"
+                      fill="currentColor"
+                      focusable="false"
+                      height="1em"
+                      viewBox="64 64 896 896"
+                      width="1em"
+                    >
+                      <path
+                        d="M923 283.6a260.04 260.04 0 0 0-56.9-82.8 264.4 264.4 0 0 0-84-55.5A265.34 265.34 0 0 0 679.7 125c-49.3 0-97.4 13.5-139.2 39-10 6.1-19.5 12.8-28.5 20.1-9-7.3-18.5-14-28.5-20.1-41.8-25.5-89.9-39-139.2-39-35.5 0-69.9 6.8-102.4 20.3-31.4 13-59.7 31.7-84 55.5a258.44 258.44 0 0 0-56.9 82.8c-13.9 32.3-21 66.6-21 101.9 0 33.3 6.8 68 20.3 103.3 11.3 29.5 27.5 60.1 48.2 91 32.8 48.9 77.9 99.9 133.9 151.6 92.8 85.7 184.7 144.9 188.6 147.3l23.7 15.2c10.5 6.7 24 6.7 34.5 0l23.7-15.2c3.9-2.5 95.7-61.6 188.6-147.3 56-51.7 101.1-102.7 133.9-151.6 20.7-30.9 37-61.5 48.2-91 13.5-35.3 20.3-70 20.3-103.3.1-35.3-7-69.6-20.9-101.9zM512 814.8S156 586.7 156 385.5C156 283.6 240.3 201 344.3 201c73.1 0 136.5 40.8 167.7 100.4C543.2 241.8 606.6 201 679.7 201c104 0 188.3 82.6 188.3 184.5 0 201.2-356 429.3-356 429.3z"
+                      />
+                    </svg>
+                  </i>
+                  <span>
+                    Save for Later
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+`;

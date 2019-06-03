@@ -1,8 +1,9 @@
-import { Card, Button, Typography, Avatar } from "antd";
-import { Link } from 'lib/routes';
+import { Avatar, Button, Card, Typography } from 'antd';
+import routes from 'lib/routes';
 
 import './ProductCard.scss';
 
+const { Link } = routes;
 const { Text } = Typography;
 const { Meta } = Card;
 
@@ -12,7 +13,9 @@ const ProductCard = () => (
       <Card
         hoverable
         style={{ width: 220 }}
-        cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
+        cover={
+          <img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />
+        }
       >
         <Text strong className="product-name">Leather Belt</Text>
         <Text strong type="warning" className="product-price">$14.55</Text>
