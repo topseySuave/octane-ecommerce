@@ -1,22 +1,17 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import reducer from './reducer';
+import appAttributesReducer from './reducers/appAttributes.reducer';
 
-export const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0
-};
+export const octReducers = combineReducers({
+  appAttributesReducer
+});
 
-export const actionTypes = {
-  TICK: 'TICK',
-};
-
-export function initializeStore (initialState = exampleInitialState) {
+export function initializeStore (initialState = {}) {
   return createStore(
-    reducer,
+    octReducers,
     initialState,
-    composeWithDevTools(applyMiddleware())
-  )
-}
+    composeWithDevTools(applyMiddleware(thunk))
+  );
+};

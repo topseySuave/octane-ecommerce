@@ -1,4 +1,6 @@
-import { actionTypes } from './store';
+export const actionTypes = {
+  TICK: 'TICK',
+};
 
 export const tick = () => {
   return { type: actionTypes.TICK };

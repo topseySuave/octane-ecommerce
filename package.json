@@ -14,14 +14,18 @@
     "test": "jest --coverage --no-cache --config=__tests__/config/jest.config.js -u"
   },
   "dependencies": {
+    "@types/next-redux-wrapper": "^2.0.2",
     "antd": "^3.18.2",
+    "axios": "^0.19.0",
     "next": "^8.1.0",
+    "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-routes": "^1.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.0.2",
     "typescript": "^3.4.5"
   },
@@ -34,6 +38,7 @@
     "@types/jest": "^24.0.12",
     "@types/next": "^8.0.5",
     "@types/react": "^16.4.18",
+    "@types/react-redux": "^7.0.9",
     "@types/react-test-renderer": "^16.0.1",
     "@types/styled-components": "^4.0.2",
     "@zeit/next-sass": "^1.0.2-canary.0",

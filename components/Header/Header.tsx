@@ -2,15 +2,18 @@ import { BackTop, Badge, Button, Dropdown, Icon, Layout, Menu } from 'antd';
 import AutoComplete from 'components/ui/AutoComplete';
 import OctDrawer from 'components/ui/Drawer';
 import Logo from 'components/ui/Logo';
+import connectComponent from 'lib/connectComponents';
 import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
+import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
+import { getDepartments, getCategories } from 'lib/actions/getAppAttributes.actions';
 import * as React from 'react';
 import './Header.scss';
-const { Header } = Layout;
 
+const { Header } = Layout;
 const { Link } = routes;
 
-const LayoutHeader: React.SFC = () => {
+const LayoutHeader = React.memo((props: any) => {
   const menu = () => (
     <Menu>
       <Menu.Item key="1">
@@ -34,6 +37,13 @@ const LayoutHeader: React.SFC = () => {
       </Menu.Item>
     </Menu>
   );
+
+  React.useEffect(() => {
+    props.getDepartments();
+    props.getCategories();
+  }, []);
+
+  const { departments, categories } = props.appAttributesReducer.octAppReducer;
 
   return (
     <Header className="main-header-container">
@@ -86,13 +96,8 @@ const LayoutHeader: React.SFC = () => {
             lineHeight: `${LINE_HEIGHT}px`,
           }}
         >
-          <Menu.Item key="category 1">French</Menu.Item>
-          <Menu.Item key="category 2">Italian</Menu.Item>
-          <Menu.Item key="category 3">Irish</Menu.Item>
-          <Menu.Item key="category 4">Animal</Menu.Item>
-          <Menu.Item key="category 5">Flowers</Menu.Item>
-          <Menu.Item key="category 6">Chrismas</Menu.Item>
-          <Menu.Item key="category 7">Valentine's</Menu.Item>
+          {categories.data.rows && categories.data.rows.map((category: ICategoryValues) =>
+            (<Menu.Item key={category.name}>{category.name}</Menu.Item>))}
         </Menu>
         <Menu
           mode="horizontal"
@@ -102,9 +107,8 @@ const LayoutHeader: React.SFC = () => {
             lineHeight: `${LINE_HEIGHT}px`,
           }}
         >
-          <Menu.Item key="category 1">Regional</Menu.Item>
-          <Menu.Item key="category 2">Nature</Menu.Item>
-          <Menu.Item key="category 3">Seasonal</Menu.Item>
+          {departments.data.map((department: IDepartmentValues) =>
+            (<Menu.Item key={department.name}>{department.name}</Menu.Item>))}
         </Menu>
       </Header>
       <BackTop>
@@ -114,6 +118,9 @@ const LayoutHeader: React.SFC = () => {
       </BackTop>
     </Header>
   );
-};
+});
 
-export default LayoutHeader;
+export default connectComponent(LayoutHeader, {
+  getDepartments,
+  getCategories
+});
