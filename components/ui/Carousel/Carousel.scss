@@ -1,0 +1,30 @@
+@import 'constants';
+@import 'colors';
+@import 'global';
+
+.ant-carousel .slick-slider {
+  overflow: hidden;
+  text-align: center;
+  line-height: 160px;
+  background: $carouselColor2;
+
+  .slick-slide img {
+    width: 100%;
+  }
+}
+
+.ant-carousel .slick-slider h3 {
+  color: $white;
+}
+
+.carousel-detail {
+  position: absolute;
+  right: (100% - 75);
+  padding: 50px;
+  top: (100% - 55);
+
+  button {
+    height: 80px !important;
+    width: 320px !important;
+  }
+}

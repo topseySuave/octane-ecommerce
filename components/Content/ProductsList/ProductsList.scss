@@ -1,0 +1,18 @@
+@import 'colors';
+@import 'global';
+@import 'constants';
+
+.pagination-section {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-list-container {
+  padding: 20px 80px;
+
+  .product-list {
+    margin-top: 40px;
+  }
+}

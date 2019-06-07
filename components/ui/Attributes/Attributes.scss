@@ -1,0 +1,31 @@
+.oct-attributes {
+  margin-bottom: 40px !important;
+
+  .ant-radio-button-wrapper.oct-radio-button {
+    width: 26px;
+    height: 26px;
+    padding: 0px 5px !important;
+    border-radius: 50%;
+    margin: 0 3px;
+
+    &:first-child {
+      border-radius: 50%;
+    }
+    &:last-child {
+      border-radius: 50%;
+    }
+  }
+
+  .ant-radio-button-wrapper-checked.oct-radio-button {
+    box-shadow: 0px 7px 15px 1px rgba(0, 0, 0, .2);
+  }
+}
+
+.oct-quantity {
+  display: flex;
+  flex-direction: row;
+
+  .ant-input-number {
+    margin: 0 15px;
+  }
+}

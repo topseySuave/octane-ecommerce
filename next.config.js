@@ -5,7 +5,7 @@ const path = require('path');
 
 module.exports = withPlugins([
   [sass, {
-    cssModules: true,
+    cssModules: false,
     cssLoaderOptions: {
       importLoaders: 1,
       localIdentName: "[local]___[hash:base64:5]",
@@ -14,11 +14,12 @@ module.exports = withPlugins([
       includePaths: ["styles"]
     },
   }],
-  typescript,
+  typescript
 ], {
   target: 'server',
   webpack: (config, { dev }) => {
     config.resolve.alias.lib = path.resolve('lib');
+    config.resolve.alias.assets = path.resolve('assets');
     config.resolve.alias.components = path.resolve('components');
     return config;
   },

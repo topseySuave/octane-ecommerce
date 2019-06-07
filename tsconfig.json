@@ -23,8 +23,27 @@
     "target": "esnext",
     "alwaysStrict": true,
     "paths": {
-      "lib/*": [ "./lib/*" ],
-      "components/*": [ "./components/*" ],
-    }
-  }
+      "lib/*": [
+        "./lib/*"
+      ],
+      "assets/*": [
+        "./assets/*"
+      ],
+      "components/*": [
+        "./components/*"
+      ]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.test.ts",
+  ]
 }

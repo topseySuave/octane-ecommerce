@@ -1,0 +1,26 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-react"
+  ],
+  "jsRules": {},
+  "rules": {
+    "import-name": [false],
+    "interface-name": [false],
+    "jsx-boolean-value": [true, "never"],
+    "jsx-no-multiline-js": [false],
+    "jsx-no-lambda": [false],
+    "variable-name": [true, "ban-keywords"],
+    "object-shorthand-properties-first": [false],
+    "no-console": [false],
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js"
+    ]
+  }
+}

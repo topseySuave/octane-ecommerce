@@ -1,12 +1,20 @@
-import Link from 'next/link';
+import { Layout } from 'antd';
+import Content from 'components/Content';
+import OctFooter from 'components/Footer';
+import Header from 'components/Header';
+import CallToAction from 'components/ui/CallToAction';
 
-import Header from '../components/Header';
+import Head from 'next/head';
+import './index.scss';
 
 export default () => (
-  <div>
-    <Header title='Welcome!' />
-    <h2>Great Stuff</h2>
-    <p>This React template uses Next.JS, TypeScript and `styled-components`</p>
-    <p>Read more on the <Link href='/about'><a>about page</a></Link>!</p>
-  </div>
-)
+  <Layout>
+    <Head>
+      <title>Octane - Ecommerce</title>
+    </Head>
+    <Header />
+    <Content />
+    <CallToAction />
+    <OctFooter />
+  </Layout>
+);

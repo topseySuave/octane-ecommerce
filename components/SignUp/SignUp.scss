@@ -1,0 +1,23 @@
+@import 'colors';
+
+.signup-container {
+  width: 25%;
+  margin: 125px auto 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  input, button {
+    margin: 10px 0px;
+  }
+
+  span.or {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+  }
+
+  .facebook-signin {
+    background-color: $facebookColor;
+  }
+}
