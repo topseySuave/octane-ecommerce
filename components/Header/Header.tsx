@@ -43,7 +43,7 @@ const LayoutHeader = React.memo((props: any) => {
     props.getCategories();
   }, []);
 
-  const { departments, categories } = props.appAttributesReducer.octAppReducer;
+  const { departments, categories } = props.appAttributesReducer;
 
   return (
     <Header className="main-header-container">

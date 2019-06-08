@@ -1,5 +1,5 @@
 export default {
-  octAppReducer: {
+  appAttributes: {
     categories: {
       loading: false,
       data: [],
@@ -7,6 +7,14 @@ export default {
     departments: {
       loading: false,
       data: [],
-    }
+    },
+  },
+  products: {
+    loading: false,
+    allProducts: {
+      rows: [],
+      count: null
+    },
+    featuredProducts: [],
   }
 };

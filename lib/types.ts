@@ -56,3 +56,13 @@ export interface CategoryResponse {
   count: number | string;
   rows: Array<ICategoryValues>;
 }
+
+// Product set
+export interface IProduct {
+  discounted_price: string;
+  price: string;
+  name: string;
+  description: string;
+  product_id: number;
+  thumbnail: string;
+}

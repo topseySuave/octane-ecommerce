@@ -1,0 +1,13 @@
+.featured-product-list-container {
+  display: flex;
+  flex-direction: column;
+
+  .featured-header {
+    text-align: center;
+  }
+  
+  .product-col-card {
+    display: flex;
+    justify-content: center;
+  }
+}

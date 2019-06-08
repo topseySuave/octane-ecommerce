@@ -1,23 +1,17 @@
 import axios from 'axios';
-import { API_PREFIX } from 'lib/constants';
-import Router from 'next/router';
+import { API_PREFIX, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR, GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS } from 'lib/constants';
 import { Response, ErrResponse } from 'lib/types';
 
-export const getAllProducts = () => {
+export const getAllProducts = (withFeatured: boolean = false) => {
   return (dispatch: any) => {
+    dispatch({ type: GET_ALL_PRODUCTS_LOADING });
     axios.get(`${API_PREFIX}/products`)
-    .then((response: Response) => {
-      dispatch(Router.push('/signin'));
-      console.log(response.data.meta.message);
+    .then(({ data }: Response) => {
+      dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
+      withFeatured && dispatch({ type: ADD_FEATURED_PRODUCTS });
     })
     .catch((err: ErrResponse) => {
-      switch (err.response.status) {
-        case 422:
-          console.log('hello world');
-        default:
-        alert(err.response.data.meta.message);
-          break;
-      }
+      dispatch({ type: GET_ALL_PRODUCTS_ERROR, data: err });
     });
   };
 };
