@@ -1,6 +1,7 @@
 export const DISTANCE_FROM_TOP = 64;
 export const LINE_HEIGHT = DISTANCE_FROM_TOP / 1.5;
 export const NUMBER_OF_FEATURED_PRODUCTS = 8;
+export const isWindows = typeof window !== 'undefined';
 
 const ASSETS_PREFIX = 'assets/';
 export const LOCAL_ASSET_IMAGES = [
@@ -48,3 +49,7 @@ export const SIGNIN_ERROR = 'SIGNIN_ERROR';
 export const SIGNUP_LOADING = 'SIGNUP_LOADING';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
+
+export const CURRENT_APP_ATTRIBUTE = 'CURRENT_APP_ATTRIBUTE';
+
+export const FILTER_CATEGORY_MENU = 'FILTER_CATEGORY_MENU';

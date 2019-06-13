@@ -3,11 +3,13 @@ export default {
     categories: {
       loading: false,
       data: [],
+      currentCategoryList: [],
     },
     departments: {
       loading: false,
       data: [],
     },
+    currentAppAttr: {},
   },
   products: {
     loading: false,
@@ -16,5 +18,6 @@ export default {
       count: null
     },
     featuredProducts: [],
+    cart: []
   }
 };

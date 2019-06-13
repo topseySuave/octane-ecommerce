@@ -1,21 +1,54 @@
-import { Layout, Row, Col, Card, Badge, Radio, Pagination } from "antd";
-import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
+import { Layout, Row, Col, Card, Pagination, Spin, Empty } from "antd";
+import { DISTANCE_FROM_TOP, LINE_HEIGHT, isWindows } from 'lib/constants';
 import ProductCard from "components/ui/ProductCard";
 import Attributes from 'components/ui/Attributes';
+import queryString from 'query-string';
 import './ProductsList.scss';
+import React from "react";
+import connectComponent from "lib/connectComponents";
+import { IStoreProps } from "lib/types";
+import { getAllProducts, getProductWithAppAttr } from "lib/actions/products.actions";
+import { setCurrentAppAttr } from "lib/actions/getAppAttributes.actions";
 
 const { Content } = Layout;
 
-const ProductsList = () => {
-  return (
-    <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
+const ProductsList = React.memo((props: IStoreProps) => {
+  const { allProducts, loading } = props.productsReducer;
+  const { currentAppAttr } = props.appAttributesReducer;
+  const currentPage = 1;
+
+  React.useEffect(() => {
+    const query: any = isWindows && queryString.parse(window.location.search);
+    const currentAppAttrName = currentAppAttr.name ? currentAppAttr.name.toLowerCase() : query.c || query.department;
+    if (query.c || query.department !== currentAppAttrName) {
+      // console.log(currentAppAttr);
+      props.setCurrentAppAttr(currentAppAttr);
+      props.getProductWithAppAttr(currentAppAttr);
+    }
+  }, [currentAppAttr]);
+  
+  {/* If there a no records in the products store object
+  we get it from the server */}
+  React.useEffect(() => {
+    if (!allProducts.rows.length) props.getAllProducts();
+  }, []);
+
+  const paginationSection = (count: any) => {
+    if (count > 20) {
+      return (
       <div className="pagination-section">
         <Row>
           <Col md={12} lg={24} sm={12}>
-            <Pagination defaultCurrent={6} total={500} />
+            <Pagination defaultCurrent={currentPage} total={count} />
           </Col>
         </Row>
       </div>
+      );
+    }
+  };
+  return (
+    <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
+      {paginationSection(allProducts.count)}
       <div className="product-list-container">
         <Row gutter={8}>
           <Col md={12} lg={6} sm={12} className="column">
@@ -27,31 +60,26 @@ const ProductsList = () => {
           </Col>
           <Col md={12} lg={18} sm={24}>
             <Row gutter={4}>
-              <Col md={4} lg={6} sm={12}>
-                <ProductCard />
-              </Col>
-              <Col md={4} lg={6} sm={12}>
-                <ProductCard />
-              </Col>
-              <Col md={4} lg={6} sm={12}>
-                <ProductCard />
-              </Col>
-              <Col md={4} lg={6} sm={12}>
-                <ProductCard />
-              </Col>
+              {loading ?
+                <div className="loader">
+                  <Spin size="large" tip="Loading..." />
+                </div> : !allProducts.rows.length &&
+                  <div className="loader">
+                    <Empty />
+                  </div>
+              }
+              {loading ? '' : allProducts.rows.map((product, index) => (
+                <Col key={index} md={4} lg={6} sm={12}>
+                  <ProductCard productDetail={product} />
+                </Col>
+              ))}
             </Row>
           </Col>
         </Row>
       </div>
-      <div className="pagination-section">
-        <Row>
-          <Col md={12} lg={24} sm={12}>
-            <Pagination defaultCurrent={6} total={500} />
-          </Col>
-        </Row>
-      </div>
+      {paginationSection(allProducts.count)}
     </Content>
   );
-};
+});
 
-export default ProductsList;
+export default connectComponent(ProductsList, {getAllProducts, setCurrentAppAttr, getProductWithAppAttr});

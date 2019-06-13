@@ -17,21 +17,23 @@ interface Props {
 
 const ProductCard = ({ productDetail, loading }: Props) => (
   <div className="oct-card">
-    <Link prefetch route={`/shop/${slugify(productDetail.name)}.html`}>
-      <Card
-        hoverable
-        style={{ width: 220 }}
-        loading={loading}
-        cover={
-          <img alt={`octane-${productDetail.name}`} src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />
-        }
-      >
-        <Text strong className="product-name">{productDetail.name}</Text>
-        <Text strong type="warning" className="product-price">${productDetail.price}</Text>
-        <Button type="danger" shape="round" className="product-btn">
-          Bag it
-        </Button>
-      </Card>
+    <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm`}>
+      <a>
+        <Card
+          hoverable
+          style={{ width: 220 }}
+          loading={loading}
+          cover={
+            <img alt={`octane-${productDetail.name}`} src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />
+          }
+        >
+          <Text strong className="product-name">{productDetail.name}</Text>
+          <Text strong type="warning" className="product-price">${productDetail.price}</Text>
+          <Button type="danger" shape="round" className="product-btn">
+            Bag it
+          </Button>
+        </Card>
+      </a>
     </Link>
   </div>
 );

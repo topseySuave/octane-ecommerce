@@ -17,6 +17,26 @@ export interface ErrResponse {
   }
 }
 
+export interface IStoreProps {
+  getAllProducts: () => void;
+  setCurrentAppAttr: (currentAppAttr: IDepartmentValues | ICategoryValues) => void;
+  getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues) => void;
+  productsReducer: {
+    allProducts: {
+      rows: [];
+      count: number;
+    },
+    featuredProducts: [];
+    loading: boolean;
+    cart: Array<IProduct>
+  };
+  appAttributesReducer: {
+    currentAppAttr: IDepartmentValues | ICategoryValues,
+    departments: object;
+    categories: object;
+  };
+}
+
 // Department set
 export interface IDepartmentValues {
   /***
@@ -65,4 +85,8 @@ export interface IProduct {
   description: string;
   product_id: number;
   thumbnail: string;
+}
+
+export interface Tab {
+  tab: 'category' | 'department';
 }
