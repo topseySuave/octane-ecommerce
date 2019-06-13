@@ -5,6 +5,14 @@ body {
   font-family: $fontFamily !important;
 }
 
+.loader {
+  width: 100%;
+  margin: 50px 0px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 @mixin transition ($value) {
   transition: $value;
   -webkit-transition: $value;

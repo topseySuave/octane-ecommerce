@@ -3,9 +3,11 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import appAttributesReducer from './reducers/appAttributes.reducer';
+import productsReducer from './reducers/products.reducer';
 
 export const octReducers = combineReducers({
-  appAttributesReducer
+  appAttributesReducer,
+  productsReducer
 });
 
 export function initializeStore (initialState = {}) {
