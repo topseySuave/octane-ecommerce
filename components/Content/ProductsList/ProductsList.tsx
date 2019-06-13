@@ -21,7 +21,6 @@ const ProductsList = React.memo((props: IStoreProps) => {
     const query: any = isWindows && queryString.parse(window.location.search);
     const currentAppAttrName = currentAppAttr.name ? currentAppAttr.name.toLowerCase() : query.c || query.department;
     if (query.c || query.department !== currentAppAttrName) {
-      // console.log(currentAppAttr);
       props.setCurrentAppAttr(currentAppAttr);
       props.getProductWithAppAttr(currentAppAttr);
     }

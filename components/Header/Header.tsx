@@ -106,6 +106,11 @@ const LayoutHeader = React.memo((props: any) => {
             lineHeight: `${LINE_HEIGHT}px`,
           }}
         >
+          {/* when the page load and react useEffect is called we dont get the currentCategoryList
+          and the categories.data.rows immediately, so we check if the are empty and show notice until
+          the data for categories.data.rows is received (currentCategoryList still remains empty)
+          when a department is selected by the user the currentCategoryList is then updated in the store
+          and then we can change the displayed list in the menu */}
           {isEmpty(categories.currentCategoryList) && isEmpty(categories.data.rows) ? '' :
            !isEmpty(categories.currentCategoryList) ? categories.currentCategoryList.map(renderMenuItems) :
            !isEmpty(categories.data.rows) && categories.data.rows.map(renderMenuItems)

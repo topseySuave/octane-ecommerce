@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_PREFIX, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR, GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
+import { Dispatch } from 'redux';
 
 export const getAllProducts = (withFeatured = true) => {
   return (dispatch: any) => {
