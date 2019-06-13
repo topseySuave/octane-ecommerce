@@ -1,4 +1,5 @@
 import { BackTop, Badge, Button, Dropdown, Icon, Layout, Menu } from 'antd';
+import { isEmpty } from 'lodash';
 import AutoComplete from 'components/ui/AutoComplete';
 import OctDrawer from 'components/ui/Drawer';
 import Logo from 'components/ui/Logo';
@@ -6,9 +7,10 @@ import connectComponent from 'lib/connectComponents';
 import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
 import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
-import { getDepartments, getCategories } from 'lib/actions/getAppAttributes.actions';
+import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
 import * as React from 'react';
 import './Header.scss';
+import { slugify } from 'lib/utils';
 
 const { Header } = Layout;
 const { Link } = routes;
@@ -37,13 +39,21 @@ const LayoutHeader = React.memo((props: any) => {
       </Menu.Item>
     </Menu>
   );
+  const { departments, categories } = props.appAttributesReducer;
 
   React.useEffect(() => {
-    props.getDepartments();
-    props.getCategories();
+    if (!departments.data.length && !categories.data.length) {
+      props.getDepartments();
+      props.getCategories();
+    }
   }, []);
 
-  const { departments, categories } = props.appAttributesReducer.octAppReducer;
+  const renderMenuItems = (category: ICategoryValues) =>
+  (<Menu.Item key={category.name} onClick={() => props.setCurrentAppAttr(category)}>
+    <Link route='shop' params={{ c: slugify(category.name.toLowerCase()) }}>
+      <a>{category.name}</a>
+    </Link>
+  </Menu.Item>);
 
   return (
     <Header className="main-header-container">
@@ -96,8 +106,10 @@ const LayoutHeader = React.memo((props: any) => {
             lineHeight: `${LINE_HEIGHT}px`,
           }}
         >
-          {categories.data.rows && categories.data.rows.map((category: ICategoryValues) =>
-            (<Menu.Item key={category.name}>{category.name}</Menu.Item>))}
+          {isEmpty(categories.currentCategoryList) && isEmpty(categories.data.rows) ? '' :
+           !isEmpty(categories.currentCategoryList) ? categories.currentCategoryList.map(renderMenuItems) :
+           !isEmpty(categories.data.rows) && categories.data.rows.map(renderMenuItems)
+          }
         </Menu>
         <Menu
           mode="horizontal"
@@ -108,7 +120,11 @@ const LayoutHeader = React.memo((props: any) => {
           }}
         >
           {departments.data.map((department: IDepartmentValues) =>
-            (<Menu.Item key={department.name}>{department.name}</Menu.Item>))}
+            (<Menu.Item key={department.name} onClick={() => props.setCurrentAppAttr(department, 'department')}>
+              <Link route='shop' params={{ department: slugify(department.name.toLowerCase()) }}>
+                <a>{department.name}</a>
+              </Link>
+            </Menu.Item>))}
         </Menu>
       </Header>
       <BackTop>
@@ -122,5 +138,5 @@ const LayoutHeader = React.memo((props: any) => {
 
 export default connectComponent(LayoutHeader, {
   getDepartments,
-  getCategories
+  getCategories, setCurrentAppAttr
 });
