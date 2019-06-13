@@ -1,4 +1,4 @@
-import { Layout, Row, Col, Card, Badge, Radio, Pagination } from "antd";
+import { Layout, Row, Col, Card, Pagination } from "antd";
 import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
 import ProductCard from "components/ui/ProductCard";
 import Attributes from 'components/ui/Attributes';

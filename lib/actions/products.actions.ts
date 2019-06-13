@@ -2,6 +2,7 @@ import axios from 'axios';
 import { API_PREFIX } from 'lib/constants';
 import Router from 'next/router';
 import { Response, ErrResponse } from 'lib/types';
+import { Dispatch } from 'redux';
 
 export const getAllProducts = () => {
   return (dispatch: any) => {
@@ -19,5 +20,11 @@ export const getAllProducts = () => {
           break;
       }
     });
+  };
+};
+
+export const addToCart = () => {
+  return (dispatch: Dispatch) => {
+    console.log('heloo world');
   };
 };
