@@ -2,6 +2,7 @@ import axios from 'axios';
 import { API_PREFIX, GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR, GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
 import { Dispatch } from 'redux';
+import { IProduct } from 'lib/types';
 
 export const getAllProducts = (withFeatured = true) => {
   return (dispatch: any) => {
@@ -31,8 +32,8 @@ export const getProductWithAppAttr = (appAttr: ICategoryValues | IDepartmentValu
   };
 };
 
-export const addToCart = () => {
+export const addToCart = (productData?: IProduct) => {
   return (dispatch: Dispatch) => {
-    console.log('heloo world');
+    console.log('heloo world', productData);
   };
 };

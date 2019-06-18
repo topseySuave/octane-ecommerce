@@ -5,7 +5,9 @@ import './ProductCard.scss';
 import { IProduct } from 'lib/types';
 import { IMAGE_DIRECTORY_PREFIX } from 'lib/constants';
 import { slugify } from 'lib/utils';
+import connectComponent from 'lib/connectComponents';
 
+import { addToCart } from 'lib/actions/products.actions';
 const { Link } = routes;
 const { Text } = Typography;
 const { Meta } = Card;
@@ -13,9 +15,10 @@ const { Meta } = Card;
 interface Props {
   productDetail: IProduct;
   loading?: boolean;
+  addToCart: (product: IProduct) => Function;
 }
 
-const ProductCard = ({ productDetail, loading }: Props) => (
+const ProductCard = ({ productDetail, loading, addToCart }: Props) => (
   <div className="oct-card">
     <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm`}>
       <a>
@@ -29,7 +32,15 @@ const ProductCard = ({ productDetail, loading }: Props) => (
         >
           <Text strong className="product-name">{productDetail.name}</Text>
           <Text strong type="warning" className="product-price">${productDetail.price}</Text>
-          <Button type="danger" shape="round" className="product-btn">
+          <Button
+            type="danger"
+            shape="round"
+            className="product-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              addToCart(productDetail);
+            }}
+          >
             Bag it
           </Button>
         </Card>
@@ -51,4 +62,4 @@ export const ProductCardHorizontal = ({ productDetail }: Props) => (
   </Card>
 );
 
-export default ProductCard;
+export default connectComponent(ProductCard, {addToCart});
