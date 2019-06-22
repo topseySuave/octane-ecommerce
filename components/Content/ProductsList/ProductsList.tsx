@@ -3,17 +3,17 @@ import { DISTANCE_FROM_TOP, LINE_HEIGHT, isWindows } from 'lib/constants';
 import ProductCard from "components/ui/ProductCard";
 import Attributes from 'components/ui/Attributes';
 import queryString from 'query-string';
-import './ProductsList.scss';
 import React from "react";
 import connectComponent from "lib/connectComponents";
 import { IStoreProps } from "lib/types";
-import { getAllProducts, getProductWithAppAttr } from "lib/actions/products.actions";
+import { getAllProducts, getProductWithAppAttr, getCartId } from "lib/actions/products.actions";
 import { setCurrentAppAttr } from "lib/actions/getAppAttributes.actions";
+import './ProductsList.scss';
 
 const { Content } = Layout;
 
 const ProductsList = React.memo((props: IStoreProps) => {
-  const { allProducts, loading } = props.productsReducer;
+  const { allProducts, loading, cart } = props.productsReducer;
   const { currentAppAttr } = props.appAttributesReducer;
   const currentPage = 1;
 
@@ -45,6 +45,7 @@ const ProductsList = React.memo((props: IStoreProps) => {
       );
     }
   };
+
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
       {paginationSection(allProducts.count)}
@@ -67,9 +68,9 @@ const ProductsList = React.memo((props: IStoreProps) => {
                     <Empty />
                   </div>
               }
-              {loading ? '' : allProducts.rows.map((product, index) => (
+              {loading ? '' : allProducts.rows.map((product: any, index) => (
                 <Col key={index} md={4} lg={6} sm={12}>
-                  <ProductCard productDetail={product} />
+                  <ProductCard productDetail={product} cart={cart} />
                 </Col>
               ))}
             </Row>
@@ -81,4 +82,4 @@ const ProductsList = React.memo((props: IStoreProps) => {
   );
 });
 
-export default connectComponent(ProductsList, {getAllProducts, setCurrentAppAttr, getProductWithAppAttr});
+export default connectComponent(ProductsList, {getAllProducts, setCurrentAppAttr, getProductWithAppAttr, getCartId});

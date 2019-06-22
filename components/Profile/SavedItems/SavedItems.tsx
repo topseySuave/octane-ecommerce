@@ -1,5 +1,5 @@
 import { Typography } from 'antd';
-import { ProductCardHorizontal } from 'components/ui/ProductCard';
+import ProductCardHorizontal from 'components/ui/ProductCard/ProductCardHorizontal';
 
 const { Title } = Typography;
 

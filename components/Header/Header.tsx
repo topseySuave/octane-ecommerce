@@ -8,9 +8,11 @@ import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
 import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
 import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
+import { getCartId, getCartItems, getCartTotal } from 'lib/actions/products.actions';
 import * as React from 'react';
-import './Header.scss';
 import { slugify } from 'lib/utils';
+import './Header.scss';
+import Cart from 'components/Cart';
 
 const { Header } = Layout;
 const { Link } = routes;
@@ -40,11 +42,15 @@ const LayoutHeader = React.memo((props: any) => {
     </Menu>
   );
   const { departments, categories } = props.appAttributesReducer;
+  const { cart } = props.productsReducer;
 
   React.useEffect(() => {
     if (!departments.data.length && !categories.data.length) {
       props.getDepartments();
       props.getCategories();
+      props.getCartItems();
+      props.getCartTotal();
+      if(!localStorage.getItem('cart_id')) props.getCartId();
     }
   }, []);
 
@@ -86,11 +92,16 @@ const LayoutHeader = React.memo((props: any) => {
               ButtonAppearance={({ onClick }: { onClick: () => void }) => {
                 return (
                   <Button type="link" onClick={onClick}>
-                    <Badge count={5}>
+                    {!isEmpty(cart.items) && <Badge count={cart.items.length}>
                       <span className="head-example" />
-                    </Badge>
+                    </Badge>}
                     <Icon type="shopping" className="icon-cart" />
                   </Button>
+                );
+              }}
+              CartItems={() => {
+                return (
+                  <Cart cart={cart} title='Cart item(s)' />
                 );
               }}
             />
@@ -143,5 +154,6 @@ const LayoutHeader = React.memo((props: any) => {
 
 export default connectComponent(LayoutHeader, {
   getDepartments,
-  getCategories, setCurrentAppAttr
+  getCategories, setCurrentAppAttr,
+  getCartId, getCartItems, getCartTotal
 });

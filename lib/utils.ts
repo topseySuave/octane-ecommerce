@@ -1,3 +1,5 @@
+import { notification } from "antd";
+
 export const slugify = (val: string): string => {
   const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;'
   const b = 'aaaaaaaaceeeeghiiiimnnnooooooprssstuuuuuwxyz------'
@@ -10,4 +12,9 @@ export const slugify = (val: string): string => {
     .replace(/\-\-+/g, '-') // Replace multiple - with single -
     .replace(/^-+/, '') // Trim - from start of text
     .replace(/-+$/, '') // Trim - from end of text
-}
+};
+
+export const openNotificationWithIcon = (type: string | number, message: string, description?: string) => notification[type]({
+  message,
+  description,
+});

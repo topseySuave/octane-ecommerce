@@ -1,22 +1,20 @@
-import { Typography } from 'antd';
-import { ProductCardHorizontal } from 'components/ui/ProductCard';
+import { Typography, Empty } from 'antd';
+import ProductCardHorizontal from 'components/ui/ProductCard/ProductCardHorizontal';
 
 const { Title } = Typography;
 
-const Cart = () => {
-  return (
-    <>
-      <Title level={3}>Saved Item(s)</Title>
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-    </>
-  );
-};
+const Cart = ({ cart, title }: any) => (
+  <>
+    <Title level={3}>{title}</Title>
+    {cart.items.length ? cart.items.map((item: any, index: number) => (
+      <ProductCardHorizontal
+        key={index}
+        productDetail={item}
+        addToCart={() => {}}
+      />
+    )) : <Empty />}
+    {cart.items.length && <Title level={3}>{`Sub-Total: $${cart.totalAmount}`}</Title>}
+  </>
+);
 
 export default Cart;

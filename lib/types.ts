@@ -17,24 +17,38 @@ export interface ErrResponse {
   }
 }
 
+export interface IActions {
+  type: string;
+  data: any;
+}
+
 export interface IStoreProps {
   getAllProducts: () => void;
   setCurrentAppAttr: (currentAppAttr: IDepartmentValues | ICategoryValues) => void;
   getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues) => void;
-  productsReducer: {
-    allProducts: {
-      rows: [];
-      count: number;
-    },
-    featuredProducts: [];
-    loading: boolean;
-    cart: Array<IProduct>
-  };
+  getCartId: () => void;
+  productsReducer: IProductsReducer;
   appAttributesReducer: {
     currentAppAttr: IDepartmentValues | ICategoryValues,
     departments: object;
     categories: object;
   };
+}
+
+export interface IProductsReducer {
+  allProducts: {
+    rows: [];
+    count: number;
+  },
+  featuredProducts: [];
+  loading: boolean;
+  cart: {
+    totalAmount: number;
+    items: Array<IProduct>;
+    error: object;
+    loading: Boolean;
+    cartId: string;
+  }
 }
 
 // Department set
@@ -85,6 +99,13 @@ export interface IProduct {
   description: string;
   product_id: number;
   thumbnail: string;
+
+  // optional properties
+  image?: string;
+  attributes?: string;
+  item_id?: number;
+  quantity?: number;
+  subtotal?: string;
 }
 
 export interface Tab {

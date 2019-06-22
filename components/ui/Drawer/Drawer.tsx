@@ -1,90 +1,60 @@
-import { Drawer, Button } from 'antd';
-import React from 'react';
+import { Drawer, Button } from "antd";
+import React, { useState } from "react";
 
 interface Props {
   ButtonAppearance?: any;
+  CartItems?: any;
 }
 
-class OctDrawer extends React.PureComponent<Props, {}> {
-  state = { visible: false, childrenDrawer: false };
+const OctDrawer = ({ ButtonAppearance, CartItems }: Props) => {
+  const [visible, setVisible] = useState(false);
 
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
+  const showDrawer = () => {
+    setVisible(true);
   };
 
-  onClose = () => {
-    this.setState({
-      visible: false,
-    });
+  const onClose = () => {
+    setVisible(!visible);
   };
 
-  showChildrenDrawer = () => {
-    this.setState({
-      childrenDrawer: true,
-    });
-  };
-
-  onChildrenDrawerClose = () => {
-    this.setState({
-      childrenDrawer: false,
-    });
-  };
-
-  render() {
-    const { ButtonAppearance } = this.props;
-    return (
-      <div>
-        <ButtonAppearance onClick={this.showDrawer} />
-        <Drawer
-          title="Multi-level drawer"
-          width={820}
-          closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible}
+  return (
+    <div>
+      <ButtonAppearance onClick={showDrawer} />
+      <Drawer
+        width={820}
+        closable={false}
+        onClose={onClose}
+        visible={visible}
+      >
+        <CartItems />
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            width: "100%",
+            borderTop: "1px solid #e8e8e8",
+            padding: "10px 16px",
+            textAlign: "right",
+            left: 0,
+            background: "#fff",
+            borderRadius: "0 0 4px 4px"
+          }}
         >
-          <Button type="primary" onClick={this.showChildrenDrawer}>
-            Two-level drawer
-          </Button>
-          <Drawer
-            title="Two-level Drawer"
-            width={720}
-            closable={false}
-            onClose={this.onChildrenDrawerClose}
-            visible={this.state.childrenDrawer}
-          >
-            This is two-level drawer
-          </Drawer>
-          <div
+          <Button
             style={{
-              position: 'absolute',
-              bottom: 0,
-              width: '100%',
-              borderTop: '1px solid #e8e8e8',
-              padding: '10px 16px',
-              textAlign: 'right',
-              left: 0,
-              background: '#fff',
-              borderRadius: '0 0 4px 4px',
+              marginRight: 8
             }}
+            onClick={onClose}
           >
-            <Button
-              style={{
-                marginRight: 8,
-              }}
-              onClick={this.onClose}
-            >
-              Cancel
-            </Button>
-            <Button onClick={this.onClose} type="primary">
-              Submit
-            </Button>
-          </div>
-        </Drawer>
-      </div>
-    );
-  }
-}
+            Close
+          </Button>
+          <Button onClick={onClose} type="primary">
+            Checkout
+          </Button>
+        </div>
+      </Drawer>
+    </div>
+  );
+};
 
 export default OctDrawer;

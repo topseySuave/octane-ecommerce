@@ -1,65 +1,62 @@
-import { Avatar, Button, Card, Typography } from 'antd';
+import { Button, Card, Typography } from 'antd';
 import routes from 'lib/routes';
-
-import './ProductCard.scss';
 import { IProduct } from 'lib/types';
 import { IMAGE_DIRECTORY_PREFIX } from 'lib/constants';
 import { slugify } from 'lib/utils';
 import connectComponent from 'lib/connectComponents';
-
 import { addToCart } from 'lib/actions/products.actions';
+import './ProductCard.scss';
+import { useState, useEffect, memo } from 'react';
 const { Link } = routes;
 const { Text } = Typography;
-const { Meta } = Card;
 
 interface Props {
   productDetail: IProduct;
   loading?: boolean;
+  cart?: any;
   addToCart: (product: IProduct) => Function;
 }
 
-const ProductCard = ({ productDetail, loading, addToCart }: Props) => (
-  <div className="oct-card">
-    <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm`}>
-      <a>
-        <Card
-          hoverable
-          style={{ width: 220 }}
-          loading={loading}
-          cover={
-            <img alt={`octane-${productDetail.name}`} src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />
-          }
-        >
-          <Text strong className="product-name">{productDetail.name}</Text>
-          <Text strong type="warning" className="product-price">${productDetail.price}</Text>
-          <Button
-            type="danger"
-            shape="round"
-            className="product-btn"
-            onClick={(e) => {
-              e.preventDefault();
-              addToCart(productDetail);
-            }}
-          >
-            Bag it
-          </Button>
-        </Card>
-      </a>
-    </Link>
-  </div>
-);
+const ProductCard = memo(({ productDetail, loading, addToCart, cart }: Props) => {
+  const [addingToCart, setAddingToCart] = useState(cart.loading);
+  useEffect(() => {
+    return () => {
+      setAddingToCart(false);
+    };
+  }, [cart.loading]);
 
-export const ProductCardHorizontal = ({ productDetail }: Props) => (
-  <Card style={{ marginTop: 18 }} loading={false} className="oct-horizontal-card">
-    <Meta
-      avatar={
-        <Avatar src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />
-      }
-      title={productDetail.name}
-      description={productDetail.description}
-    />
-    <Button type="link">Remove</Button>
-  </Card>
-);
+  return (
+    <div className="oct-card">
+      <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm`}>
+        <a>
+          <Card
+            hoverable
+            style={{ width: 220 }}
+            loading={loading}
+            cover={
+              <img alt={`octane-${productDetail.name}`} src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />
+            }
+          >
+            <Text strong className="product-name">{productDetail.name}</Text>
+            <Text strong type="warning" className="product-price">${productDetail.price}</Text>
+            <Button
+              type="danger"
+              shape="round"
+              className="product-btn"
+              loading={addingToCart}
+              onClick={() => {
+                // e.preventDefault();
+                addToCart(productDetail);
+                setAddingToCart(true);
+              }}
+            >
+              Bag it
+            </Button>
+          </Card>
+        </a>
+      </Link>
+    </div>
+  );
+});
 
 export default connectComponent(ProductCard, {addToCart});

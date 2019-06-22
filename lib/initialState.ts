@@ -18,6 +18,12 @@ export default {
       count: null
     },
     featuredProducts: [],
-    cart: []
+    cart: {
+      items: [],
+      totalAmount: '',
+      error: {},
+      loading: false,
+      cartId: ''
+    },
   }
 };
