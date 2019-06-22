@@ -1,14 +1,37 @@
-import { Col, Layout, Row, Typography } from 'antd';
+import { Col, Layout, Row, Typography, Spin } from 'antd';
+import queryString from 'query-string';
 import Attributes from 'components/ui/Attributes';
-import { DISTANCE_FROM_TOP, LINE_HEIGHT, ONLINE_DEMO_PRODUCT_IMAGES } from 'lib/constants';
+import { DISTANCE_FROM_TOP, LINE_HEIGHT, IMAGE_DIRECTORY_PREFIX, isWindows } from 'lib/constants';
+import { addToCart, getCurrentProductItem } from 'lib/actions/products.actions';
 import './Product.scss';
+import connectComponent from 'lib/connectComponents';
+import { useEffect, useState } from 'react';
+import { IStoreProps } from 'lib/types';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const Product = () => {
+const Product = ({ getCurrentProductItem, addToCart, productsReducer }: IStoreProps) => {
+  const { loading, currentProductItem , cart} = productsReducer;
+
+  const [inCart, setInCart] = useState(false);
+
+  useEffect(() => {
+    const { pid }: any = isWindows && queryString.parse(window.location.search);
+    if(parseInt(pid, 10)) getCurrentProductItem(parseInt(pid, 10));
+  }, []);
+
+  useEffect(() => {
+    cart.items.forEach((item) => {
+      if(item.product_id === currentProductItem.product_id) setInCart(true);
+    });
+  }, [currentProductItem])
+
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
+      {loading ? <div className="loader">
+        <Spin size="large" tip="Loading..." />
+      </div> :
       <div className="product-container">
         <div className="product-preview">
           <Row>
@@ -17,41 +40,28 @@ const Product = () => {
                 <Col lg={12}>
                   <div className="product-images">
                     <img
-                      src={ONLINE_DEMO_PRODUCT_IMAGES}
-                      alt="product-images"
+                      src={`${IMAGE_DIRECTORY_PREFIX}${currentProductItem.image}`}
+                      alt={currentProductItem.name}
                     />
                   </div>
                 </Col>
                 <Col lg={12}>
                   <div className="product-details">
-                    <Title level={2}>Cananda football Jersey T-shirt for men</Title>
-                    <Title level={3} style={{ color: 'red' }}>$13.45</Title>
+                    <Title level={2}>{currentProductItem.name}</Title>
+                    <Title level={3} style={{ color: 'red' }}>${currentProductItem.price}</Title>
                     <div style={{ marginBottom: 40 }}>
-                      <Text>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Temporibus sequi saepe enim maiores dolorem tenetur,
-                        officia aut vero eaque autem dignissimos accusamus quasi,
-                        reiciendis aliquam ea! Mollitia at accusantium dolorem dolorum.
-                        Doloremque, architecto asperiores. Sit assumenda nesciunt
-                        neque ducimus maiores omnis ad voluptatum eius quis vel
-                        laboriosam dolores veniam dicta dolorem veritatis asperiores,
-                        itaque architecto magnam aspernatur a quibusdam voluptates iste.
-                        Eveniet ratione aspernatur iste error soluta ab amet odio rerum eum maxime,
-                        quis, nihil quisquam, delectus quam nam sequi.
-                        Repellat culpa ut eum distinctio neque commodi quam similique placeat,
-                        voluptatum aut ipsum hic alias aliquam libero corporis nam error.
-                      </Text>
+                      <Text>{currentProductItem.description}</Text>
                     </div>
-                    <Attributes product />
+                    <Attributes isProduct inCart product={currentProductItem} addToCart={addToCart} />
                   </div>
                 </Col>
               </Row>
             </Col>
           </Row>
         </div>
-      </div>
+      </div>}
     </Content>
   );
 };
 
-export default Product;
+export default connectComponent(Product, { addToCart, getCurrentProductItem });

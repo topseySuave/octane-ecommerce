@@ -1,14 +1,18 @@
 import { Button, InputNumber, Radio, Typography } from 'antd';
 import React from 'react';
 import './Attributes.scss';
+import { IProduct } from 'lib/types';
 
 const { Title } = Typography;
 
 interface Props {
-  product?: boolean;
+  isProduct?: boolean;
+  inCart?: boolean;
+  product?: IProduct;
+  addToCart: (product: IProduct) => void;
 }
 
-const Attributes: React.SFC<Props> = ({ product }) => {
+const Attributes: React.SFC<Props> = ({ product, isProduct, addToCart, inCart }) => {
   const onChange = (value: any) => {
     console.log('changed', value);
   };
@@ -71,7 +75,7 @@ const Attributes: React.SFC<Props> = ({ product }) => {
           <Radio.Button value="7">XL</Radio.Button>
         </Radio.Group>
       </div>
-      {product && (
+      {isProduct && (
         <>
           <div className="oct-attributes oct-quantity">
             <Title level={4} style={{ color: '#CCC' }}>
@@ -79,11 +83,10 @@ const Attributes: React.SFC<Props> = ({ product }) => {
             </Title>
             <InputNumber min={1} max={12} defaultValue={2} onChange={onChange} />
           </div>
-          <Button type="danger" shape="round" icon="shopping-cart" size="large">
-            Add to cart
-          </Button>
-          <Button type="link" icon="heart">
-            Save for Later
+          <Button type="danger" shape="round" icon="shopping-cart" size="large" disabled={inCart}
+            onClick={() => addToCart(product)}
+          >
+            {inCart ? 'Added to Cart' : 'Add to cart'}
           </Button>
         </>
       )}

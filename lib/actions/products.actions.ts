@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_PREFIX,
   GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR,
   GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS,
-  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR
+  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR
 } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
 import { Dispatch } from 'redux';
@@ -75,6 +75,33 @@ export const getCartTotal = () => {
   };
 };
 
+export const saveForLater = (itemId: number) => {
+  return (dispatch: Dispatch) => {
+    axios.get(`${API_PREFIX}/shoppingcart/saveForLater/${itemId}`)
+    .then(({ data }: any) => {
+      if(isEmpty(data)) {
+        dispatch({ type: REMOVE_ITEM_SUCCESS, data: itemId });
+        return openNotificationWithIcon('success', 'Saved for later');
+      }
+    })
+    .catch((err) => {
+      dispatch({ type: CART_TOTAL_ERROR, data: err });
+    });
+  };
+};
+
+export const getSavedItems = () => {
+  return (dispatch: Dispatch) => {
+    axios.get(`${API_PREFIX}/shoppingcart/getSaved/${localStorage.getItem('cart_id')}`)
+    .then(({ data }: any) => {
+      dispatch({ type: SET_SAVED_ITEMS_SUCCESS, data });
+    })
+    .catch((err) => {
+      dispatch({ type: SET_SAVED_ITEMS_ERROR, data: err });
+    });
+  };
+};
+
 export const addToCart = (productData: IProduct) => {
   return (dispatch: Dispatch) => {
     dispatch({ type: ADD_TO_CART_LOADING });
@@ -101,14 +128,23 @@ export const removeFromCart = (productData: IProduct) => {
     axios.delete(`${API_PREFIX}/shoppingcart/removeProduct/${productData.item_id}`)
     .then(({data}: any) => {
       if(isEmpty(data)) {
-        dispatch({ type: REMOVE_ITEM_SUCCESS, data: productData });
+        dispatch({ type: REMOVE_ITEM_SUCCESS, data: productData.item_id });
         return openNotificationWithIcon('success', 'Removed an item from the cart');
       }
     })
     .catch((err) => {
-      console.log('err ===> ', err);
       dispatch({ type: REMOVE_ITEM_ERROR, data: err });
       openNotificationWithIcon('error', 'An Error occurred');
+    });
+  };
+};
+
+export const getCurrentProductItem = (id: number) => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: SET_CURRENT_PRODUCT_ITEM_LOADING });
+    axios.get(`${API_PREFIX}/products/${id}`)
+    .then(({ data }: any) => {
+      dispatch({ type: SET_CURRENT_PRODUCT_ITEM, data });
     });
   };
 };

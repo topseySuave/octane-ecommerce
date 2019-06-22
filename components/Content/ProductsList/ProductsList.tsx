@@ -13,7 +13,7 @@ import './ProductsList.scss';
 const { Content } = Layout;
 
 const ProductsList = React.memo((props: IStoreProps) => {
-  const { allProducts, loading, cart } = props.productsReducer;
+  const { allProducts, loading } = props.productsReducer;
   const { currentAppAttr } = props.appAttributesReducer;
   const currentPage = 1;
 
@@ -54,7 +54,7 @@ const ProductsList = React.memo((props: IStoreProps) => {
           <Col md={12} lg={6} sm={12} className="column">
             <div>
               <Card title="Filters" style={{ width: 300 }}>
-                <Attributes />
+                <Attributes addToCart={() => {}} />
               </Card>
             </div>
           </Col>
@@ -70,7 +70,7 @@ const ProductsList = React.memo((props: IStoreProps) => {
               }
               {loading ? '' : allProducts.rows.map((product: any, index) => (
                 <Col key={index} md={4} lg={6} sm={12}>
-                  <ProductCard productDetail={product} cart={cart} />
+                  <ProductCard productDetail={product} />
                 </Col>
               ))}
             </Row>

@@ -4,30 +4,22 @@ import { IProduct } from 'lib/types';
 import { IMAGE_DIRECTORY_PREFIX } from 'lib/constants';
 import { slugify } from 'lib/utils';
 import connectComponent from 'lib/connectComponents';
-import { addToCart } from 'lib/actions/products.actions';
 import './ProductCard.scss';
-import { useState, useEffect, memo } from 'react';
+import { memo } from 'react';
 const { Link } = routes;
 const { Text } = Typography;
 
 interface Props {
   productDetail: IProduct;
   loading?: boolean;
-  cart?: any;
   addToCart: (product: IProduct) => Function;
+  setCurrentProductItem: (product: IProduct) => Function;
 }
 
-const ProductCard = memo(({ productDetail, loading, addToCart, cart }: Props) => {
-  const [addingToCart, setAddingToCart] = useState(cart.loading);
-  useEffect(() => {
-    return () => {
-      setAddingToCart(false);
-    };
-  }, [cart.loading]);
-
+const ProductCard = memo(({ productDetail, loading }: Props) => {
   return (
     <div className="oct-card">
-      <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm`}>
+      <Link prefetch route={`/shop/${slugify(productDetail.name)}.htm?pid=${productDetail.product_id}`}>
         <a>
           <Card
             hoverable
@@ -43,12 +35,6 @@ const ProductCard = memo(({ productDetail, loading, addToCart, cart }: Props) =>
               type="danger"
               shape="round"
               className="product-btn"
-              loading={addingToCart}
-              onClick={() => {
-                // e.preventDefault();
-                addToCart(productDetail);
-                setAddingToCart(true);
-              }}
             >
               Bag it
             </Button>
@@ -59,4 +45,4 @@ const ProductCard = memo(({ productDetail, loading, addToCart, cart }: Props) =>
   );
 });
 
-export default connectComponent(ProductCard, {addToCart});
+export default connectComponent(ProductCard, {});

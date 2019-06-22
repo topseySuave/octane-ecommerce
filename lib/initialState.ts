@@ -17,13 +17,15 @@ export default {
       rows: [],
       count: null
     },
+    savedItems: [],
     featuredProducts: [],
     cart: {
       items: [],
       totalAmount: '',
       error: {},
       loading: false,
-      cartId: ''
+      cartId: '',
     },
+    currentProductItem: {}
   }
 };

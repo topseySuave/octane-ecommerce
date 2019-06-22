@@ -42,7 +42,7 @@ const LayoutContent = React.memo((props: IStoreProps) => {
               {/* We loop throught the featured products to display them */}
               {featuredProducts.map((product: IProduct, index: number) => (
                 <Col className="product-col-card" key={index} span={6} lg={6} sm={1}>
-                  <a><ProductCard loading={loading} productDetail={product} /></a>
+                  <ProductCard loading={loading} productDetail={product} />
                 </Col>
               ))}
             </Row>

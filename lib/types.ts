@@ -27,6 +27,9 @@ export interface IStoreProps {
   setCurrentAppAttr: (currentAppAttr: IDepartmentValues | ICategoryValues) => void;
   getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues) => void;
   getCartId: () => void;
+  addToCart: (product: IProduct) => Function;
+  getCurrentProductItem: (pid: number) => Function;
+  saveForLater: (itemId: number) => Function;
   productsReducer: IProductsReducer;
   appAttributesReducer: {
     currentAppAttr: IDepartmentValues | ICategoryValues,
@@ -37,10 +40,11 @@ export interface IStoreProps {
 
 export interface IProductsReducer {
   allProducts: {
-    rows: [];
+    rows: Array<IProduct>;
     count: number;
   },
-  featuredProducts: [];
+  savedItems: Array<IProduct>;
+  featuredProducts: Array<IProduct>;
   loading: boolean;
   cart: {
     totalAmount: number;
@@ -48,7 +52,8 @@ export interface IProductsReducer {
     error: object;
     loading: Boolean;
     cartId: string;
-  }
+  };
+  currentProductItem: IProduct;
 }
 
 // Department set
@@ -106,6 +111,7 @@ export interface IProduct {
   item_id?: number;
   quantity?: number;
   subtotal?: string;
+  image_2?: string;
 }
 
 export interface Tab {
