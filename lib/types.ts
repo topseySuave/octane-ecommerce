@@ -23,13 +23,14 @@ export interface IActions {
 }
 
 export interface IStoreProps {
-  getAllProducts: () => void;
+  getAllProducts: (withFeatured?: boolean, page?: number) => void;
   setCurrentAppAttr: (currentAppAttr: IDepartmentValues | ICategoryValues) => void;
-  getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues) => void;
+  getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues, page?: number) => void;
   getCartId: () => void;
   addToCart: (product: IProduct) => Function;
   getCurrentProductItem: (pid: number) => Function;
   saveForLater: (itemId: number) => Function;
+  getProductAttributes: (pid: number) => Function;
   productsReducer: IProductsReducer;
   appAttributesReducer: {
     currentAppAttr: IDepartmentValues | ICategoryValues,
@@ -85,6 +86,12 @@ export interface IAppAttributes {
   loading: boolean;
 }
 
+export interface IProductAttributes {
+  attribute_name: string;
+  attribute_value: string;
+  attribute_value_id: number;
+}
+
 // Category Set
 export interface ICategoryValues {
   category_id: number;
@@ -107,7 +114,7 @@ export interface IProduct {
 
   // optional properties
   image?: string;
-  attributes?: string;
+  attributes?: string | IProductAttributes;
   item_id?: number;
   quantity?: number;
   subtotal?: string;

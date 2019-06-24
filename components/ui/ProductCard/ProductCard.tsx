@@ -12,8 +12,6 @@ const { Text } = Typography;
 interface Props {
   productDetail: IProduct;
   loading?: boolean;
-  addToCart: (product: IProduct) => Function;
-  setCurrentProductItem: (product: IProduct) => Function;
 }
 
 const ProductCard = memo(({ productDetail, loading }: Props) => {
@@ -23,7 +21,7 @@ const ProductCard = memo(({ productDetail, loading }: Props) => {
         <a>
           <Card
             hoverable
-            style={{ width: 220 }}
+            style={{ width: 220, margin: '0 auto' }}
             loading={loading}
             cover={
               <img alt={`octane-${productDetail.name}`} src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail}`} />

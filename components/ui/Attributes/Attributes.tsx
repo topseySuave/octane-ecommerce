@@ -1,7 +1,7 @@
-import { Button, InputNumber, Radio, Typography } from 'antd';
-import React from 'react';
-import './Attributes.scss';
-import { IProduct } from 'lib/types';
+import { Button, InputNumber, Radio, Typography } from "antd";
+import React from "react";
+import "./Attributes.scss";
+import { IProduct, IProductAttributes } from "lib/types";
 
 const { Title } = Typography;
 
@@ -9,84 +9,93 @@ interface Props {
   isProduct?: boolean;
   inCart?: boolean;
   product?: IProduct;
+  withAttributes?: boolean;
+  attributes: Array<IProductAttributes>;
   addToCart: (product: IProduct) => void;
 }
 
-const Attributes: React.SFC<Props> = ({ product, isProduct, addToCart, inCart }) => {
+const Attributes: React.SFC<Props> = ({
+  product,
+  isProduct,
+  addToCart,
+  inCart,
+  withAttributes,
+  attributes
+}) => {
   const onChange = (value: any) => {
-    console.log('changed', value);
+    console.log("changed", value);
   };
+
+  let colors: Array<IProductAttributes> = [];
+  let sizes: Array<IProductAttributes> = [];
+
+  if(withAttributes) {
+    colors = attributes.filter(
+      (item: IProductAttributes) => item.attribute_name === "Color"
+    );
+    sizes = attributes.filter(
+      (item: IProductAttributes) => item.attribute_name === "Size"
+    );
+  }
 
   return (
     <>
-      <div className="oct-attributes">
-        <Title level={4} style={{ color: '#CCC' }}>
-          Color
-        </Title>
-        <Radio.Group defaultValue="a" buttonStyle="outline">
-          <Radio.Button
-            className="oct-radio-button"
-            value="1"
-            style={{ backgroundColor: '#F62F5E' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="2"
-            style={{ backgroundColor: '#6EB2FB' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="3"
-            style={{ backgroundColor: '#00D3CA' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="4"
-            style={{ backgroundColor: '#FE5C07' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="5"
-            style={{ backgroundColor: '#F8E71C' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="6"
-            style={{ backgroundColor: '#7ED321' }}
-          />
-          <Radio.Button
-            className="oct-radio-button"
-            value="7"
-            style={{ backgroundColor: '#9013FE' }}
-          />
-        </Radio.Group>
-      </div>
-      <div className="oct-attributes">
-        <Title level={4} style={{ color: '#CCC' }}>
-          Size
-        </Title>
-        <Radio.Group defaultValue="a" buttonStyle="outline">
-          <Radio.Button value="1">XL</Radio.Button>
-          <Radio.Button value="2">XL</Radio.Button>
-          <Radio.Button value="3">XL</Radio.Button>
-          <Radio.Button value="4">XL</Radio.Button>
-          <Radio.Button value="5">XL</Radio.Button>
-          <Radio.Button value="6">XL</Radio.Button>
-          <Radio.Button value="7">XL</Radio.Button>
-        </Radio.Group>
-      </div>
+      {withAttributes && <>
+        <div className="oct-attributes">
+          <Title level={4} style={{ color: "#CCC" }}>
+            Color
+          </Title>
+          <Radio.Group defaultValue="a" buttonStyle="outline">
+            {colors.length &&
+              colors.map(item => (
+                <Radio.Button
+                  key={item.attribute_value_id}
+                  className="oct-radio-button"
+                  value={item.attribute_value_id}
+                  style={{ backgroundColor: item.attribute_value }}
+                />
+              ))}
+          </Radio.Group>
+        </div>
+        <div className="oct-attributes">
+          <Title level={4} style={{ color: "#CCC" }}>
+            Size
+          </Title>
+          <Radio.Group defaultValue="a" buttonStyle="outline">
+            {sizes.length &&
+              sizes.map(item => (
+                <Radio.Button
+                  key={item.attribute_value_id}
+                  value={item.attribute_value_id}
+                >
+                  {item.attribute_value}
+                </Radio.Button>
+              ))}
+          </Radio.Group>
+        </div>
+      </>}
       {isProduct && (
         <>
           <div className="oct-attributes oct-quantity">
-            <Title level={4} style={{ color: '#CCC' }}>
+            <Title level={4} style={{ color: "#CCC" }}>
               Quantity
             </Title>
-            <InputNumber min={1} max={12} defaultValue={2} onChange={onChange} />
+            <InputNumber
+              min={1}
+              max={12}
+              defaultValue={2}
+              onChange={onChange}
+            />
           </div>
-          <Button type="danger" shape="round" icon="shopping-cart" size="large" disabled={inCart}
+          <Button
+            type="danger"
+            shape="round"
+            icon="shopping-cart"
+            size="large"
+            disabled={inCart}
             onClick={() => addToCart(product)}
           >
-            {inCart ? 'Added to Cart' : 'Add to cart'}
+            {inCart ? "Added to Cart" : "Add to cart"}
           </Button>
         </>
       )}

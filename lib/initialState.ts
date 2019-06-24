@@ -26,6 +26,8 @@ export default {
       loading: false,
       cartId: '',
     },
-    currentProductItem: {}
+    currentProductItem: {
+      attributes: [],
+    }
   }
 };

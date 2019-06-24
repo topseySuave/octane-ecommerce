@@ -2,23 +2,25 @@ import { Col, Layout, Row, Typography, Spin } from 'antd';
 import queryString from 'query-string';
 import Attributes from 'components/ui/Attributes';
 import { DISTANCE_FROM_TOP, LINE_HEIGHT, IMAGE_DIRECTORY_PREFIX, isWindows } from 'lib/constants';
-import { addToCart, getCurrentProductItem } from 'lib/actions/products.actions';
+import { addToCart, getCurrentProductItem, getProductAttributes} from 'lib/actions/products.actions';
 import './Product.scss';
 import connectComponent from 'lib/connectComponents';
 import { useEffect, useState } from 'react';
 import { IStoreProps } from 'lib/types';
+import Head from 'next/head';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
 
-const Product = ({ getCurrentProductItem, addToCart, productsReducer }: IStoreProps) => {
+const Product = ({ getCurrentProductItem, addToCart, productsReducer, getProductAttributes }: IStoreProps) => {
   const { loading, currentProductItem , cart} = productsReducer;
 
   const [inCart, setInCart] = useState(false);
-
+  
   useEffect(() => {
     const { pid }: any = isWindows && queryString.parse(window.location.search);
     if(parseInt(pid, 10)) getCurrentProductItem(parseInt(pid, 10));
+    getProductAttributes(parseInt(pid, 10));
   }, []);
 
   useEffect(() => {
@@ -29,6 +31,9 @@ const Product = ({ getCurrentProductItem, addToCart, productsReducer }: IStorePr
 
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
+      <Head>
+        <title>{currentProductItem.name} | Octane - Ecommerce</title>
+      </Head>
       {loading ? <div className="loader">
         <Spin size="large" tip="Loading..." />
       </div> :
@@ -52,7 +57,14 @@ const Product = ({ getCurrentProductItem, addToCart, productsReducer }: IStorePr
                     <div style={{ marginBottom: 40 }}>
                       <Text>{currentProductItem.description}</Text>
                     </div>
-                    <Attributes isProduct inCart product={currentProductItem} addToCart={addToCart} />
+                    <Attributes
+                      isProduct
+                      inCart
+                      product={currentProductItem}
+                      addToCart={addToCart}
+                      withAttributes
+                      attributes={currentProductItem.attributes}
+                    />
                   </div>
                 </Col>
               </Row>
@@ -64,4 +76,4 @@ const Product = ({ getCurrentProductItem, addToCart, productsReducer }: IStorePr
   );
 };
 
-export default connectComponent(Product, { addToCart, getCurrentProductItem });
+export default connectComponent(Product, { addToCart, getCurrentProductItem, getProductAttributes });

@@ -13,7 +13,7 @@ const Cart = ({ cart, title }: any) => (
         addToCart={() => {}}
       />
     )) : <Empty />}
-    {cart.items.length && <Title level={3}>{`Sub-Total: $${cart.totalAmount}`}</Title>}
+    {cart.items.length && <Title level={3}>{`Cart-Total: $${cart.totalAmount}`}</Title>}
   </>
 );
 

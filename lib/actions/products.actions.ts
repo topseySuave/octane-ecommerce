@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_PREFIX,
   GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR,
   GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS,
-  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR
+  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR, ADD_PRODUCT_ATTRIBUTES
 } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
 import { Dispatch } from 'redux';
@@ -10,10 +10,11 @@ import { IProduct } from 'lib/types';
 import { openNotificationWithIcon } from 'lib/utils';
 import { isEmpty } from 'lodash';
 
-export const getAllProducts = (withFeatured = true) => {
+export const getAllProducts = (withFeatured = true, page?: number) => {
+  const api = !page ? `${API_PREFIX}/products` : `${API_PREFIX}/products?page=${page}`;
   return (dispatch: any) => {
     dispatch({ type: GET_ALL_PRODUCTS_LOADING });
-    axios.get(`${API_PREFIX}/products`)
+    axios.get(api)
     .then(({ data }: Response) => {
       dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
       withFeatured && dispatch({ type: ADD_FEATURED_PRODUCTS });
@@ -24,11 +25,17 @@ export const getAllProducts = (withFeatured = true) => {
   };
 };
 
-export const getProductWithAppAttr = (appAttr: any) => {
+export const getProductWithAppAttr = (appAttr: any, page?: number) => {
+  console.log('category_id ===> ', appAttr.category_id);
   const attr = typeof appAttr.category_id !== 'undefined' ? 'inCategory' : 'inDepartment';
+
+  const api = !page ? `${API_PREFIX}/products/${attr || 'inDepartment'}/${appAttr.category_id || appAttr.department_id}` :
+  `${API_PREFIX}/products/${attr || 'inDepartment'}/${appAttr.category_id || appAttr.department_id}?page=${page}`
+  
+  
   return (dispatch: any) => {
     dispatch({ type: GET_ALL_PRODUCTS_LOADING });
-    axios.get(`${API_PREFIX}/products/${attr || 'inDepartment'}/${appAttr.category_id || appAttr.department_id}`)
+    axios.get(api)
     .then(({ data }: Response) => {
       dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
     })
@@ -145,6 +152,15 @@ export const getCurrentProductItem = (id: number) => {
     axios.get(`${API_PREFIX}/products/${id}`)
     .then(({ data }: any) => {
       dispatch({ type: SET_CURRENT_PRODUCT_ITEM, data });
+    });
+  };
+};
+
+export const getProductAttributes = (pid: number) => {
+  return (dispatch: Dispatch) => {
+    axios.get(`${API_PREFIX}/attributes/inProduct/${pid}`)
+    .then(({ data }) => {
+      dispatch({ type: ADD_PRODUCT_ATTRIBUTES, data });
     });
   };
 };

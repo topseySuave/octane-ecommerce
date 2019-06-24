@@ -13,7 +13,8 @@ import {
   REMOVE_ITEM_SUCCESS,
   SET_CURRENT_PRODUCT_ITEM,
   SET_CURRENT_PRODUCT_ITEM_LOADING,
-  SET_SAVED_ITEMS_SUCCESS
+  SET_SAVED_ITEMS_SUCCESS,
+  ADD_PRODUCT_ATTRIBUTES
 } from "lib/constants";
 import { IActions } from "lib/types";
 
@@ -58,11 +59,23 @@ export default (state = initialState.products, action: IActions) => {
     case CART_TOTAL_SUCCESS:
       return { ...state, cart: { ...state.cart, totalAmount: action.data } };
     case SET_CURRENT_PRODUCT_ITEM:
-      return { ...state, loading: false, currentProductItem: action.data };
+      return {
+        ...state,
+        loading: false,
+        currentProductItem: { ...state.currentProductItem, ...action.data }
+      };
     case SET_CURRENT_PRODUCT_ITEM_LOADING:
       return { ...state, loading: true };
     case SET_SAVED_ITEMS_SUCCESS:
       return { ...state, savedItems: [...state.savedItems, action.data] };
+    case ADD_PRODUCT_ATTRIBUTES:
+      return {
+        ...state,
+        currentProductItem: {
+          ...state.currentProductItem,
+          attributes: action.data
+        }
+      };
     default:
       return state;
   }

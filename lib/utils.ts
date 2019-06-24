@@ -1,4 +1,6 @@
 import { notification } from "antd";
+import queryString from 'query-string';
+import { isWindows } from "lib/constants";
 
 export const slugify = (val: string): string => {
   const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;'
@@ -18,3 +20,11 @@ export const openNotificationWithIcon = (type: string | number, message: string,
   message,
   description,
 });
+
+export const getCurrentPageURL = () => {
+  return isWindows && queryString.parse(location.search);
+};
+
+export const setCurrentURL = (url: string) => {
+  location.search = url;
+};

@@ -21,7 +21,12 @@ const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater }: 
         <Avatar src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail || productDetail.image}`} />
       }
       title={productDetail.name}
-      description={`Sub-Total: ${productDetail.subtotal}`}
+      description={
+        <>
+          <p>{`Price: ${productDetail.price}`}</p>
+          <p>{`Sub-Total: ${productDetail.subtotal}`}</p>
+        </>
+      }
     />
     <Button type="link" onClick={() => removeFromCart(productDetail)}>Remove</Button>
     <Button type="link" icon="heart" onClick={() => saveForLater(productDetail.item_id)}>
