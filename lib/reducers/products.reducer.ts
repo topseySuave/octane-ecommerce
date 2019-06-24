@@ -14,7 +14,8 @@ import {
   SET_CURRENT_PRODUCT_ITEM,
   SET_CURRENT_PRODUCT_ITEM_LOADING,
   SET_SAVED_ITEMS_SUCCESS,
-  ADD_PRODUCT_ATTRIBUTES
+  ADD_PRODUCT_ATTRIBUTES,
+  ADD_PRODUCT_REVIEWS
 } from "lib/constants";
 import { IActions } from "lib/types";
 
@@ -76,6 +77,8 @@ export default (state = initialState.products, action: IActions) => {
           attributes: action.data
         }
       };
+    case ADD_PRODUCT_REVIEWS:
+      return { ...state, currentProductItem: { ...state.currentProductItem, reviews: action.data } };
     default:
       return state;
   }

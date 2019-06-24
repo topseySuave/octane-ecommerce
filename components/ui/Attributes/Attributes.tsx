@@ -10,8 +10,8 @@ interface Props {
   inCart?: boolean;
   product?: IProduct;
   withAttributes?: boolean;
-  attributes: Array<IProductAttributes>;
-  addToCart: (product: IProduct) => void;
+  attributes: any;
+  addToCart: (product: any) => void;
 }
 
 const Attributes: React.SFC<Props> = ({

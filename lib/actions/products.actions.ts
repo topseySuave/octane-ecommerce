@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { API_PREFIX,
   GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR,
-  GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS,
+  GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS, ADD_PRODUCT_REVIEWS,
   ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR, ADD_PRODUCT_ATTRIBUTES
 } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
@@ -165,12 +165,20 @@ export const getProductAttributes = (pid: number) => {
   };
 };
 
+export const getProductsReviews = (pid: number) => {
+  return (dispatch: Dispatch) => {
+    axios.get(`${API_PREFIX}/products/${pid}/reviews`)
+    .then(({ data }) => {
+      dispatch({ type: ADD_PRODUCT_REVIEWS, data });
+    });
+  };
+};
+
 export const searchProductItem = (value: string) => {
   return (dispatch: Dispatch) => {
     axios.get(`${API_PREFIX}/products/search?query_string=${value}`)
     .then(({ data }) => {
       if (!isEmpty(data.rows)) {
-        console.log('search result ===> ', data);
         dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
       }
     });

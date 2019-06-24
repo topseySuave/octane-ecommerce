@@ -3,6 +3,7 @@
 
   .product-preview {
     padding: 30px;
+    margin-bottom: 40px;
 
     .product-images {
       height: 500px;
@@ -18,5 +19,9 @@
     .product-details {
       display: block;
     }
+  }
+  .product-review-container {
+    width: 50%;
+    margin: 40px auto;
   }
 }

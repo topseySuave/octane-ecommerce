@@ -31,6 +31,7 @@ export interface IStoreProps {
   getCurrentProductItem: (pid: number) => Function;
   saveForLater: (itemId: number) => Function;
   getProductAttributes: (pid: number) => Function;
+  getProductsReviews: (pid: number) => Function;
   productsReducer: IProductsReducer;
   appAttributesReducer: {
     currentAppAttr: IDepartmentValues | ICategoryValues,
@@ -114,11 +115,12 @@ export interface IProduct {
 
   // optional properties
   image?: string;
-  attributes?: string | IProductAttributes;
+  attributes?: string | Array<IProductAttributes>;
   item_id?: number;
   quantity?: number;
   subtotal?: string;
   image_2?: string;
+  reviews?: Array<[]>;
 }
 
 export interface Tab {
