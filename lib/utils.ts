@@ -16,6 +16,17 @@ export const slugify = (val: string): string => {
     .replace(/-+$/, '') // Trim - from end of text
 };
 
+export const urlencode = (str: string): string => {
+  str = (str + '').toString();
+  return encodeURIComponent(str)
+    .replace(/!/g, '%21')
+    .replace(/'/g, '%27')
+    .replace(/\(/g, '%28')
+    .replace(/\)/g, '%29')
+    .replace(/\*/g, '%2A')
+    .replace(/%20/g, '+');
+};
+
 export const openNotificationWithIcon = (type: string | number, message: string, description?: string) => notification[type]({
   message,
   description,

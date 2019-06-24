@@ -164,3 +164,15 @@ export const getProductAttributes = (pid: number) => {
     });
   };
 };
+
+export const searchProductItem = (value: string) => {
+  return (dispatch: Dispatch) => {
+    axios.get(`${API_PREFIX}/products/search?query_string=${value}`)
+    .then(({ data }) => {
+      if (!isEmpty(data.rows)) {
+        console.log('search result ===> ', data);
+        dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
+      }
+    });
+  };
+};

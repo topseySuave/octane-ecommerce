@@ -8,9 +8,9 @@ import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
 import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
 import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
-import { getCartId, getCartItems, getCartTotal } from 'lib/actions/products.actions';
+import { getCartId, getCartItems, getCartTotal, searchProductItem } from 'lib/actions/products.actions';
 import * as React from 'react';
-import { slugify } from 'lib/utils';
+import { slugify, urlencode } from 'lib/utils';
 import './Header.scss';
 import Cart from 'components/Cart';
 
@@ -61,6 +61,14 @@ const LayoutHeader = React.memo((props: any) => {
     </Link>
   </Menu.Item>);
 
+  const onSearch = (value: string) => {
+    // Only start search for a product when the search string is
+    // more than 3 characters long.
+    if (urlencode(value).length > 3) {
+      props.searchProductItem(urlencode(value));
+    }
+  }
+
   return (
     <Header className="main-header-container">
       <div className="main-header">
@@ -71,7 +79,10 @@ const LayoutHeader = React.memo((props: any) => {
             </a>
           </Link>
         </div>
-        <AutoComplete />
+
+        {/* Auto Complete */}
+        <AutoComplete onSearch={onSearch} />
+
         <Menu
           mode="horizontal"
           defaultSelectedKeys={['3']}
@@ -153,7 +164,7 @@ const LayoutHeader = React.memo((props: any) => {
 });
 
 export default connectComponent(LayoutHeader, {
-  getDepartments,
+  getDepartments, searchProductItem,
   getCategories, setCurrentAppAttr,
   getCartId, getCartItems, getCartTotal
 });
