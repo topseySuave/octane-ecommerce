@@ -10,7 +10,6 @@ const Cart = ({ cart, title }: any) => (
       <ProductCardHorizontal
         key={index}
         productDetail={item}
-        addToCart={() => {}}
       />
     )) : <Empty />}
     {cart.items.length && <Title level={3}>{`Cart-Total: $${cart.totalAmount}`}</Title>}

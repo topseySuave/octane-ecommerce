@@ -13,6 +13,7 @@ interface Props {
   attributes: any;
   addToCart?: (product?: IProduct) => void;
   setInCart?: (val: boolean) => void;
+  getCartTotal?: () => Function;
 }
 
 const Attributes: React.SFC<Props> = ({
@@ -21,7 +22,7 @@ const Attributes: React.SFC<Props> = ({
   addToCart,
   inCart,
   withAttributes,
-  attributes, setInCart
+  attributes, setInCart, getCartTotal
 }) => {
   const onChange = (value: any) => {
     console.log("changed", value);
@@ -96,7 +97,8 @@ const Attributes: React.SFC<Props> = ({
             disabled={inCart}
             onClick={() => {
               addToCart && addToCart(product);
-              setInCart && setInCart(true)
+              setInCart && setInCart(true);
+              getCartTotal && getCartTotal();
             }}
           >
             {inCart ? "Added to Cart" : "Add to cart"}

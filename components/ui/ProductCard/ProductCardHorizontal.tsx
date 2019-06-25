@@ -3,18 +3,19 @@ import { Card, Avatar, Button } from "antd";
 import Meta from "antd/lib/card/Meta";
 import { IMAGE_DIRECTORY_PREFIX } from "lib/constants";
 import { IProduct } from "lib/types";
-import { removeFromCart, saveForLater } from 'lib/actions/products.actions';
+import { removeFromCart, saveForLater, getCartTotal } from 'lib/actions/products.actions';
 
 interface Props {
   productDetail: IProduct;
   loading?: boolean;
   cart?: any;
-  addToCart: (product: IProduct) => Function;
-  removeFromCart: (product: IProduct) => Function;
-  saveForLater: (id?: number) => Function;
+  addToCart?: (product: IProduct) => Function;
+  removeFromCart?: (product: IProduct) => Function;
+  getCartTotal?: () => Function;
+  saveForLater?: (id?: number) => Function;
 }
 
-const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater }: Props) => (
+const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater, getCartTotal }: Props) => (
   <Card style={{ marginTop: 18 }} loading={false} className="oct-horizontal-card">
     <Meta
       avatar={
@@ -28,11 +29,14 @@ const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater }: 
         </>
       }
     />
-    <Button type="link" onClick={() => removeFromCart(productDetail)}>Remove</Button>
-    <Button type="link" icon="heart" onClick={() => saveForLater(productDetail.item_id)}>
+    <Button type="link" onClick={() => removeFromCart && removeFromCart(productDetail)}>Remove</Button>
+    <Button type="link" icon="heart" onClick={() => {
+      saveForLater && saveForLater(productDetail.item_id);
+      getCartTotal && getCartTotal();
+    }}>
       Save for Later
     </Button>
   </Card>
 );
 
-export default connectComponent(ProductCardHorizontal, { removeFromCart, saveForLater });
+export default connectComponent(ProductCardHorizontal, { removeFromCart, saveForLater, getCartTotal });

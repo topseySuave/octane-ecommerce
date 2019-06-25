@@ -11,7 +11,7 @@ import {
   addToCart,
   getCurrentProductItem,
   getProductAttributes,
-  getProductsReviews
+  getProductsReviews, getCartTotal
 } from "lib/actions/products.actions";
 import connectComponent from "lib/connectComponents";
 import { useEffect, useState } from "react";
@@ -26,7 +26,7 @@ const { Title, Text } = Typography;
 
 const Product = ({
   getCurrentProductItem,
-  addToCart,
+  addToCart, getCartTotal,
   productsReducer,
   getProductAttributes,
   getProductsReviews,
@@ -89,6 +89,7 @@ const Product = ({
                       inCart={inCart}
                       product={currentProductItem}
                       addToCart={addToCart}
+                      getCartTotal={getCartTotal}
                       withAttributes
                       attributes={currentProductItem.attributes}
                       setInCart={setInCart}
@@ -110,7 +111,7 @@ const Product = ({
 };
 
 export default connectComponent(Product, {
-  addToCart,
+  addToCart, getCartTotal,
   getCurrentProductItem,
   getProductAttributes,
   getProductsReviews
