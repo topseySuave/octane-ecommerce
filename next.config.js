@@ -16,7 +16,7 @@ module.exports = withPlugins([
   }],
   typescript
 ], {
-  target: 'server',
+  target: 'serverless',
   webpack: (config, { dev }) => {
     config.resolve.alias.lib = path.resolve('lib');
     config.resolve.alias.assets = path.resolve('assets');
