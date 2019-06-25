@@ -30,7 +30,6 @@ const Reviews = ({ reviews }: Props) => {
     });
   };
 
-  // console.log('createReviewData +++> ', createReviewData());
   return (
     <List
       className="comment-list"

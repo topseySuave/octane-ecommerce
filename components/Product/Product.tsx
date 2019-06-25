@@ -91,14 +91,17 @@ const Product = ({
                       addToCart={addToCart}
                       withAttributes
                       attributes={currentProductItem.attributes}
+                      setInCart={setInCart}
                     />
+                  </div>
+                </Col>
+                <Col lg={24}>
+                  <div className='product-review-container'>
+                    <Reviews reviews={currentProductItem.reviews} />
                   </div>
                 </Col>
               </Row>
             </Col>
-          </div>
-          <div className='product-review-container'>
-            <Reviews reviews={currentProductItem.reviews} />
           </div>
         </div>
       )}
