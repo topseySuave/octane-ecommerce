@@ -4,10 +4,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import appAttributesReducer from './reducers/appAttributes.reducer';
 import productsReducer from './reducers/products.reducer';
+import authReducer from './reducers/auth.reducer';
 
 export const octReducers = combineReducers({
   appAttributesReducer,
-  productsReducer
+  productsReducer,
+  authReducer
 });
 
 export function initializeStore (initialState = {}) {

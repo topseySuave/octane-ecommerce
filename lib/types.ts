@@ -39,6 +39,10 @@ export interface IStoreProps {
     departments: object;
     categories: object;
   };
+  authReducer: {
+    user: {}
+    loading: boolean;
+  }
 }
 
 export interface IProductsReducer {

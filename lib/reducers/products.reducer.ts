@@ -17,9 +17,8 @@ import {
   ADD_PRODUCT_ATTRIBUTES,
   ADD_PRODUCT_REVIEWS
 } from "lib/constants";
-import { IActions } from "lib/types";
 
-export default (state = initialState.products, action: IActions) => {
+export default (state = initialState.products, action: any) => {
   switch (action.type) {
     case GET_ALL_PRODUCTS_SUCCESS:
       return { ...state, loading: false, allProducts: action.data };

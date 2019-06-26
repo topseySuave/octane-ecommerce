@@ -10,7 +10,7 @@ import routes from 'lib/routes';
 import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
 import { getCartId, getCartItems, getCartTotal, searchProductItem } from 'lib/actions/products.actions';
 import * as React from 'react';
-import { slugify, urlencode } from 'lib/utils';
+import { slugify, urlencode, getUserData } from 'lib/utils';
 import './Header.scss';
 import Cart from 'components/Cart';
 
@@ -18,27 +18,41 @@ const { Header } = Layout;
 const { Link } = routes;
 
 const LayoutHeader = React.memo((props: any) => {
+  getUserData();
   const menu = () => (
     <Menu>
-      <Menu.Item key="1">
-        <Link prefetch href="/signin">
-          <a>
-            <Icon type="login" className="signin" />
-            {'  '}
-            Login
-          </a>
-        </Link>
-      </Menu.Item>
-      <Menu.Divider />
-      <Menu.Item key="4">
-        <Link prefetch href="/signup">
-          <a>
-            <Icon type="user-add" className="signup" />
-            {'   '}
-            Join Octane and Shop
-          </a>
-        </Link>
-      </Menu.Item>
+      {getUserData().accessToken ? (
+        <Menu.Item key="1">
+          <Link prefetch href="/customer">
+            <a>
+              <Icon type="user" className="signup" />
+              {'   '}
+              My Account
+            </a>
+          </Link>
+        </Menu.Item>) : (
+        <>
+          <Menu.Item key="1">
+            <Link prefetch href="/signin">
+              <a>
+                <Icon type="login" className="signin" />
+                {'  '}
+                Login
+              </a>
+            </Link>
+          </Menu.Item>
+          <Menu.Divider />
+          <Menu.Item key="4">
+            <Link prefetch href="/signup">
+              <a>
+                <Icon type="user-add" className="signup" />
+                {'   '}
+                Join Octane and Shop
+              </a>
+            </Link>
+          </Menu.Item>
+        </>
+      )}
     </Menu>
   );
   const { departments, categories } = props.appAttributesReducer;

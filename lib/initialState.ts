@@ -30,5 +30,9 @@ export default {
       attributes: [],
       reviews: []
     }
+  },
+  auth: {
+    user: {},
+    loading: false,
   }
 };

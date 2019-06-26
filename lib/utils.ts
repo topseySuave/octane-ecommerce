@@ -39,3 +39,9 @@ export const getCurrentPageURL = () => {
 export const setCurrentURL = (url: string) => {
   location.search = url;
 };
+
+export const getUserData = () => {
+  if(isWindows && localStorage.getItem('me')) {
+    return JSON.parse(localStorage.getItem('me'));
+  }
+};
