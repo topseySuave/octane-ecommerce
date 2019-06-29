@@ -1,7 +1,6 @@
 import React from "react";
 // import Router from "next/router";
 import { Input, Icon, Button, Typography, Form, Checkbox } from "antd";
-// import WithSocialMedia from "components/WithSocialMedia";
 import { Link } from "lib/routes";
 
 interface Props {

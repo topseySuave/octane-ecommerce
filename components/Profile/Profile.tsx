@@ -1,17 +1,24 @@
 import { Button, Card, Layout, Tabs, Typography } from 'antd';
-import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
+import { DISTANCE_FROM_TOP, LINE_HEIGHT, isWindows } from 'lib/constants';
 import Link from 'next/link';
 import AccountDetailForm from './AccountDetailForm';
 import Orders from './Orders';
 import './Profile.scss';
 import SavedItems from './SavedItems';
 import ShippingForm from './ShippingForm';
+import { useEffect } from 'react';
+import { getUserData } from 'lib/utils';
+import Router from 'next/router';
 
 const { Title } = Typography;
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
 const Profile = () => {
+  useEffect(() => {
+    if (isWindows && !getUserData().accessToken) Router.push('/shop');
+  }, []);
+
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
       <div className="oct-profile-container">
@@ -31,7 +38,7 @@ const Profile = () => {
               <SavedItems />
             </TabPane>
           </Tabs>
-          <Link prefetch href="/logout?redirect=<url>">
+          <Link prefetch href="/signout">
             <a>
               <Button type="link">Log out</Button>
             </a>

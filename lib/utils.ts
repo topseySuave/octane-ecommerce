@@ -41,7 +41,12 @@ export const setCurrentURL = (url: string) => {
 };
 
 export const getUserData = () => {
-  if(isWindows && localStorage.getItem('me')) {
-    return JSON.parse(localStorage.getItem('me'));
-  }
+  if(isWindows && localStorage.getItem('me')) JSON.parse(localStorage.getItem('me'));
+  return { accessToken: false };
+};
+
+export const signOutUser = () => {
+  isWindows && localStorage.removeItem('me');
+  if(isWindows && localStorage.getItem('me')) return false;
+  return true;
 };

@@ -4,7 +4,7 @@ import AutoComplete from 'components/ui/AutoComplete';
 import OctDrawer from 'components/ui/Drawer';
 import Logo from 'components/ui/Logo';
 import connectComponent from 'lib/connectComponents';
-import { DISTANCE_FROM_TOP, LINE_HEIGHT } from 'lib/constants';
+import { DISTANCE_FROM_TOP, LINE_HEIGHT, isWindows } from 'lib/constants';
 import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
 import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
@@ -18,43 +18,47 @@ const { Header } = Layout;
 const { Link } = routes;
 
 const LayoutHeader = React.memo((props: any) => {
-  getUserData();
-  const menu = () => (
-    <Menu>
-      {getUserData().accessToken ? (
+  const menu = () => {
+    if (getUserData().accessToken) {
+      return (
+        <Menu>
+          <Menu.Item key="1">
+            <Link prefetch href="/customer">
+              <a>
+                <Icon type="user" className="signup" />
+                {'   '}
+                My Account
+              </a>
+            </Link>
+          </Menu.Item>
+        </Menu>
+      );
+    }
+    return (
+      <Menu>
         <Menu.Item key="1">
-          <Link prefetch href="/customer">
+          <Link prefetch href="/signin">
             <a>
-              <Icon type="user" className="signup" />
-              {'   '}
-              My Account
+              <Icon type="login" className="signin" />
+              {'  '}
+              Login
             </a>
           </Link>
-        </Menu.Item>) : (
-        <>
-          <Menu.Item key="1">
-            <Link prefetch href="/signin">
-              <a>
-                <Icon type="login" className="signin" />
-                {'  '}
-                Login
-              </a>
-            </Link>
-          </Menu.Item>
-          <Menu.Divider />
-          <Menu.Item key="4">
-            <Link prefetch href="/signup">
-              <a>
-                <Icon type="user-add" className="signup" />
-                {'   '}
-                Join Octane and Shop
-              </a>
-            </Link>
-          </Menu.Item>
-        </>
-      )}
-    </Menu>
-  );
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="4">
+          <Link prefetch href="/signup">
+            <a>
+              <Icon type="user-add" className="signup" />
+              {'   '}
+              Join Octane and Shop
+            </a>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    );
+  };
+
   const { departments, categories } = props.appAttributesReducer;
   const { cart } = props.productsReducer;
 
