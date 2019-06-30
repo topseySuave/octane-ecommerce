@@ -13,29 +13,30 @@ interface Props {
   removeFromCart?: (product: IProduct) => Function;
   getCartTotal?: () => Function;
   saveForLater?: (id?: number) => Function;
+  saveForLaterPage?: boolean;
 }
 
-const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater, getCartTotal }: Props) => (
+const ProductCardHorizontal = ({ productDetail, removeFromCart, saveForLater, getCartTotal, saveForLaterPage }: Props) => (
   <Card style={{ marginTop: 18 }} loading={false} className="oct-horizontal-card">
     <Meta
       avatar={
-        <Avatar src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail || productDetail.image}`} />
+        <Avatar src={`${IMAGE_DIRECTORY_PREFIX}${productDetail.thumbnail || productDetail.image || ''}`} />
       }
       title={productDetail.name}
       description={
         <>
           <p>{`Price: ${productDetail.price}`}</p>
-          <p>{`Sub-Total: ${productDetail.subtotal}`}</p>
+          {productDetail.subtotal && <p>{`Sub-Total: ${productDetail.subtotal}`}</p>}
         </>
       }
     />
     <Button type="link" onClick={() => removeFromCart && removeFromCart(productDetail)}>Remove</Button>
-    <Button type="link" icon="heart" onClick={() => {
+    {!saveForLaterPage && <Button type="link" icon="heart" onClick={() => {
       saveForLater && saveForLater(productDetail.item_id);
       getCartTotal && getCartTotal();
     }}>
       Save for Later
-    </Button>
+    </Button>}
   </Card>
 );
 

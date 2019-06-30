@@ -67,7 +67,7 @@ export default (state = initialState.products, action: any) => {
     case SET_CURRENT_PRODUCT_ITEM_LOADING:
       return { ...state, loading: true };
     case SET_SAVED_ITEMS_SUCCESS:
-      return { ...state, savedItems: [...state.savedItems, action.data] };
+      return { ...state, savedItems: action.data };
     case ADD_PRODUCT_ATTRIBUTES:
       return {
         ...state,

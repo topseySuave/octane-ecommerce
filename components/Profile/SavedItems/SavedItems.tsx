@@ -1,20 +1,20 @@
-import { Typography } from 'antd';
+import { Typography, Empty } from 'antd';
 import ProductCardHorizontal from 'components/ui/ProductCard/ProductCardHorizontal';
+import _ from 'lodash';
 
 const { Title } = Typography;
 
-const SavedItems = () => {
+const SavedItems = ({ items }: any) => {
   return (
     <>
       <Title level={3}>Saved Item(s)</Title>
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
-      <ProductCardHorizontal />
+      {_.isEmpty(items) ? <Empty /> : items.map((item: any, index: number) => (
+        <ProductCardHorizontal
+          key={index}
+          productDetail={item}
+          saveForLaterPage
+        />
+      ))}
     </>
   );
 };

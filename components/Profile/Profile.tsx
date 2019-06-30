@@ -6,18 +6,70 @@ import Orders from './Orders';
 import './Profile.scss';
 import SavedItems from './SavedItems';
 import ShippingForm from './ShippingForm';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getUserData } from 'lib/utils';
 import Router from 'next/router';
+import connectComponent from 'lib/connectComponents';
+import { updateUserData } from 'lib/actions/auth.actions';
+import { getSavedItems } from 'lib/actions/products.actions';
+import { IProductsReducer } from 'lib/types';
 
 const { Title } = Typography;
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
-const Profile = () => {
+export interface UserInterface {
+  customer: any;
+  accessToken: string;
+  expires_in: string;
+}
+
+interface Props {
+  authReducer: {
+    user: UserInterface;
+    loading: boolean;
+  };
+  productsReducer: IProductsReducer;
+  updateUserData: (value: any) => void;
+  getSavedItems: () => void;
+}
+
+const Profile: React.SFC<Props> = ({ productsReducer, authReducer: { user }, updateUserData, getSavedItems }) => {
+  /**
+   * user input field state
+   */
+  // const fieldsData = { name: '', email: '', dayPhone: '', evePhone: '', modPhone: '' };
+  // const [fieldsState, setFieldsState] = useState(fieldsData);
+
+  const [loadingState, setLoadingState] = useState(false);
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    setLoadingState(!loadingState);
+    const input = e.target;
+    const newFormInput = {
+      name: input.username.value || null,
+      email: input.email.value || null,
+      dayPhone: input.dayPhone.value || null,
+      evePhone: input.evePhone.value || null,
+      modPhone: input.mobPhone.value || null,
+      password: 'gabmicah'
+    }
+    const token = user.accessToken || '';
+    /**
+     * We are getting an access UnAuthorized and would require a fix from turing.
+     */
+    updateUserData(newFormInput, token);
+    setLoadingState(false);
+  };
+
+  const { savedItems } = productsReducer;
+
   useEffect(() => {
     if (isWindows && !getUserData().accessToken) Router.push('/shop');
+    getSavedItems();
   }, []);
+  
 
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
@@ -26,16 +78,20 @@ const Profile = () => {
         <Card style={{ width: '100%' }}>
           <Tabs tabPosition={'left'}>
             <TabPane tab="My Octane Account" key="1">
-              <AccountDetailForm />
+              <AccountDetailForm
+                user={user}
+                loading={loadingState}
+                handleSubmit={handleSubmit}
+              />
             </TabPane>
             <TabPane tab="Account/Shipping Address" key="2">
               <ShippingForm />
             </TabPane>
-            <TabPane tab="Orders" key="3">
+            {/* <TabPane tab="Orders" key="3">
               <Orders />
-            </TabPane>
+            </TabPane> */}
             <TabPane tab="Saved for Later" key="4">
-              <SavedItems />
+              <SavedItems items={savedItems} />
             </TabPane>
           </Tabs>
           <Link prefetch href="/signout">
@@ -49,4 +105,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default connectComponent(Profile, {updateUserData, getSavedItems});

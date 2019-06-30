@@ -55,3 +55,20 @@ export const addSignedInUser = () => {
     }
   };
 };
+
+export const updateUserData = (value: any, token: string) => {
+  return (dispatch: Dispatch<{}>) => {
+    console.log('values ===> ', value);
+    axios.put(`${API_PREFIX}/customer?token=${token.split(' ')[1]}`, value)
+    .then(({ data }: any) => {
+      console.log(data);
+    })
+    /**
+     * there is an error with this endpoint where it tells that "Access Unauthorized"
+     */
+    .catch((err) => {
+      console.log(err);
+      return openNotificationWithIcon('error', 'Access Unauthorized', 'We are getting an access UnAuthorized and would require a fix from turing');
+    });
+  };
+};
