@@ -6,7 +6,6 @@ import { openNotificationWithIcon } from "lib/utils";
 import connectComponent from "lib/connectComponents";
 import { signUpUser } from 'lib/actions/auth.actions';
 import Router from "next/router";
-import queryString from 'query-string';
 
 interface Props {
   form: any;
@@ -22,9 +21,6 @@ class SignUpForm extends React.PureComponent<Props> {
   componentWillReceiveProps(newProps: any) {
     if(newProps.authReducer.user.accessToken) {
       this.setState({ loading: newProps.authReducer.loading });
-      if(queryString.parse(location.search).redirecTo) {
-        return location.href = queryString.parse(location.search).redirecTo;
-      }
       return Router.push('/shop');
     }
   }

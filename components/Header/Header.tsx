@@ -9,6 +9,7 @@ import { IDepartmentValues, ICategoryValues } from 'lib/types';
 import routes from 'lib/routes';
 import { getDepartments, getCategories, setCurrentAppAttr } from 'lib/actions/getAppAttributes.actions';
 import { getCartId, getCartItems, getCartTotal, searchProductItem } from 'lib/actions/products.actions';
+import { addSignedInUser } from 'lib/actions/auth.actions';
 import * as React from 'react';
 import { slugify, urlencode, getUserData } from 'lib/utils';
 import './Header.scss';
@@ -68,6 +69,7 @@ const LayoutHeader = React.memo((props: any) => {
       props.getCategories();
       props.getCartItems();
       props.getCartTotal();
+      props.addSignedInUser();
       if(!localStorage.getItem('cart_id')) props.getCartId();
     }
   }, []);
@@ -184,5 +186,5 @@ const LayoutHeader = React.memo((props: any) => {
 export default connectComponent(LayoutHeader, {
   getDepartments, searchProductItem,
   getCategories, setCurrentAppAttr,
-  getCartId, getCartItems, getCartTotal
+  getCartId, getCartItems, getCartTotal, addSignedInUser
 });

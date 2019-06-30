@@ -1,19 +1,27 @@
 import axios from 'axios';
-import { API_PREFIX, ADD_USER_SUCCESS, ADD_USER_LOADING, ADD_USER_ERROR } from 'lib/constants';
+import { API_PREFIX, ADD_USER_SUCCESS, ADD_USER_LOADING, ADD_USER_ERROR, ADD_EXISTING_USER } from 'lib/constants';
 import { ErrResponse } from 'lib/types';
 import { Dispatch } from 'react';
-import { openNotificationWithIcon } from 'lib/utils';
+import { openNotificationWithIcon, getUserData } from 'lib/utils';
 
 export const signInUser = (userData: any) => {
   const user = { email: userData.email, password: userData.password };
   return (dispatch: Dispatch<{}>) => {
+    dispatch({ type: ADD_USER_LOADING });
     axios.post(`${API_PREFIX}/customers/login`, user)
     .then(({ data }: any) => {
-      console.log('data ===> ', data);
+      if(data.error) {
+        dispatch({ type: ADD_USER_ERROR, data: data });
+        return openNotificationWithIcon('warning', 'User Does not exists');
+      } else {
+        dispatch({ type: ADD_USER_SUCCESS, data });
+        if(userData.remember) localStorage.setItem('me', JSON.stringify(data));
+      }
     })
     .catch((err: ErrResponse) => {
       console.log('Error: ', err);
-      return openNotificationWithIcon('error', 'An error occurred signin in');
+      dispatch({ type: ADD_USER_ERROR, data: err });
+      return openNotificationWithIcon('error', 'User Does not exists');
     });
   };
 };
@@ -37,5 +45,13 @@ export const signUpUser = (userData: any) => {
       dispatch({ type: ADD_USER_ERROR, data: err });
       return openNotificationWithIcon('error', 'User already exists');
     });
+  };
+};
+
+export const addSignedInUser = () => {
+  return (dispatch: Dispatch<{}>) => {
+    if (getUserData().accessToken) {
+      dispatch({ type: ADD_EXISTING_USER, data: getUserData() });
+    }
   };
 };

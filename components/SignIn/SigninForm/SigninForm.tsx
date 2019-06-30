@@ -1,33 +1,51 @@
 import React from "react";
-// import Router from "next/router";
-import { Input, Icon, Button, Typography, Form, Checkbox } from "antd";
+import Router from "next/router";
+import { Input, Icon, Button, Form, Checkbox } from "antd";
 import { Link } from "lib/routes";
+import connectComponent from "lib/connectComponents";
+import { signInUser } from 'lib/actions/auth.actions';
 
 interface Props {
   form: any;
+  signInUser: (valu: object) => void;
+  authReducer: any;
 }
 
 class SignInForm extends React.PureComponent<Props> {
+  state: any = {
+    loading: this.props.authReducer.loading
+  };
+
+  componentWillReceiveProps(newProps: any) {
+    if(newProps.authReducer.user.accessToken) {
+      this.setState({ loading: newProps.authReducer.loading });
+      return Router.push('/shop');
+    }
+  }
+
   handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     this.props.form.validateFields((err: any, values: any) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        this.setState({ loading: !this.state.loading });
+        this.props.signInUser(values);
       }
     });
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
+    const { loading } = this.state;
+
     return (
       <Form onSubmit={this.handleSubmit} className="login-form">
         <Form.Item>
-          {getFieldDecorator('username', {
-            rules: [{ required: true, message: 'Please input your username!' }],
+          {getFieldDecorator('email', {
+            rules: [{ required: true, message: 'Please input your email!' }],
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-              placeholder="Username"
+              prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              placeholder="Email"
             />,
           )}
         </Form.Item>
@@ -55,6 +73,7 @@ class SignInForm extends React.PureComponent<Props> {
               htmlType="submit"
               className="login-form-button"
               style={{ width: '100%' }}
+              loading={loading}
             >
               Sign in
             </Button>
@@ -71,4 +90,4 @@ class SignInForm extends React.PureComponent<Props> {
 
 const WrappedSignInForm = Form.create({ name: 'normal_login' })(SignInForm);
 
-export default WrappedSignInForm;
+export default connectComponent(WrappedSignInForm, { signInUser });
