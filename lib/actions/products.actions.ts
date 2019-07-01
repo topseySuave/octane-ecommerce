@@ -2,7 +2,7 @@ import axios from 'axios';
 import { API_PREFIX,
   GET_ALL_PRODUCTS_LOADING, GET_ALL_PRODUCTS_ERROR,
   GET_ALL_PRODUCTS_SUCCESS, ADD_FEATURED_PRODUCTS, ADD_PRODUCT_REVIEWS,
-  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR, ADD_PRODUCT_ATTRIBUTES
+  ADD_TO_CART_ERROR, SET_CART_ID, ADD_TO_CART_SUCCESS, ADD_TO_CART_LOADING, CART_TOTAL_SUCCESS, CART_TOTAL_ERROR, REMOVE_ITEM_SUCCESS, REMOVE_ITEM_ERROR, SET_CURRENT_PRODUCT_ITEM, SET_CURRENT_PRODUCT_ITEM_LOADING, SET_SAVED_ITEMS_SUCCESS, SET_SAVED_ITEMS_ERROR, ADD_PRODUCT_ATTRIBUTES, GET_SHIPPING_REGION
 } from 'lib/constants';
 import { Response, ErrResponse, ICategoryValues, IDepartmentValues } from 'lib/types';
 import { Dispatch } from 'redux';
@@ -181,6 +181,15 @@ export const searchProductItem = (value: string) => {
       if (!isEmpty(data.rows)) {
         dispatch({ type: GET_ALL_PRODUCTS_SUCCESS, data });
       }
+    });
+  };
+};
+
+export const getShippingRegions = () => {
+  return (dispatch: any) => {
+    axios.get(`${API_PREFIX}/shipping/regions`)
+    .then(({ data }: any) => {
+      dispatch({ type: GET_SHIPPING_REGION, data });
     });
   };
 };

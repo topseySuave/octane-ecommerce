@@ -61,6 +61,7 @@ export interface IProductsReducer {
     cartId: string;
   };
   currentProductItem: IProduct;
+  shippingRegions: Array<{}>;
 }
 
 // Department set
