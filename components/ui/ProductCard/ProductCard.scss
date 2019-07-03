@@ -16,4 +16,8 @@
       @include transition(all ease-in-out 400ms);
     }
   }
+
+  .strike {
+    text-decoration: line-through;
+  }
 }

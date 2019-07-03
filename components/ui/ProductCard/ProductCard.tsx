@@ -39,7 +39,7 @@ const ProductCard = memo(({ productDetail, loading }: Props) => {
               {productDetail.name}
             </Text>
             <Text strong type="warning" className="product-price">
-              <small><strike>${productDetail.price}</strike></small>
+              <small className="strike">${productDetail.price}</small>
             </Text>
             <Text
               strong
