@@ -7,8 +7,5 @@ describe('Orders', () => {
   it('Renders with user profile tabs settings', () => {
     const tree = shallow(<Orders />);
     expect(tree).toMatchSnapshot();
-    // const mounted = shallow(<Profile />);
-    // const profile = mounted.find('content');
-    // console.log(profile);
   });
 });

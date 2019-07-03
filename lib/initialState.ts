@@ -29,7 +29,8 @@ export default {
     currentProductItem: {
       attributes: [],
       reviews: []
-    }
+    },
+    orders: [],
   },
   auth: {
     user: {},

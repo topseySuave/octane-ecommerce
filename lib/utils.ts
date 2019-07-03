@@ -45,6 +45,8 @@ export const getUserData = () => {
   return { accessToken: false };
 };
 
+export const headers = { 'user-key': getUserData().accessToken };
+
 export const signOutUser = () => {
   // Romove the user data from localStorage;
   isWindows && localStorage.removeItem('me');

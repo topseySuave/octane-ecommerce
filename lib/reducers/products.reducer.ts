@@ -15,7 +15,8 @@ import {
   SET_CURRENT_PRODUCT_ITEM_LOADING,
   SET_SAVED_ITEMS_SUCCESS,
   ADD_PRODUCT_ATTRIBUTES,
-  ADD_PRODUCT_REVIEWS
+  ADD_PRODUCT_REVIEWS,
+  GET_ORDERS_SUCCESSFUL
 } from "lib/constants";
 
 export default (state = initialState.products, action: any) => {
@@ -77,7 +78,15 @@ export default (state = initialState.products, action: any) => {
         }
       };
     case ADD_PRODUCT_REVIEWS:
-      return { ...state, currentProductItem: { ...state.currentProductItem, reviews: action.data } };
+      return {
+        ...state,
+        currentProductItem: {
+          ...state.currentProductItem,
+          reviews: action.data
+        }
+      };
+    case GET_ORDERS_SUCCESSFUL:
+      return { ...state, orders: action.data };
     default:
       return state;
   }
