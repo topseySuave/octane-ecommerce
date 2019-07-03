@@ -1,7 +1,8 @@
-import { Button, InputNumber, Radio, Typography } from "antd";
+import { Button, Radio, Typography } from "antd";
 import React from "react";
 import "./Attributes.scss";
 import { IProduct, IProductAttributes } from "lib/types";
+import { RadioChangeEvent } from "antd/lib/radio";
 
 const { Title } = Typography;
 
@@ -14,6 +15,7 @@ interface Props {
   addToCart?: (product?: IProduct) => void;
   setInCart?: (val: boolean) => void;
   getCartTotal?: () => Function;
+  onChange: (e: RadioChangeEvent) => void;
 }
 
 const Attributes: React.SFC<Props> = ({
@@ -21,13 +23,9 @@ const Attributes: React.SFC<Props> = ({
   isProduct,
   addToCart,
   inCart,
-  withAttributes,
+  withAttributes, onChange,
   attributes, setInCart, getCartTotal
 }) => {
-  const onChange = (value: any) => {
-    console.log("changed", value);
-  };
-
   let colors: Array<IProductAttributes> = [];
   let sizes: Array<IProductAttributes> = [];
 
@@ -47,13 +45,13 @@ const Attributes: React.SFC<Props> = ({
           <Title level={4} style={{ color: "#CCC" }}>
             Color
           </Title>
-          <Radio.Group defaultValue="a" buttonStyle="outline">
+          <Radio.Group defaultValue="a" buttonStyle="outline" onChange={onChange}>
             {colors.length &&
               colors.map(item => (
                 <Radio.Button
                   key={item.attribute_value_id}
                   className="oct-radio-button"
-                  value={item.attribute_value_id}
+                  value={item.attribute_value}
                   style={{ backgroundColor: item.attribute_value }}
                 />
               ))}
@@ -63,12 +61,12 @@ const Attributes: React.SFC<Props> = ({
           <Title level={4} style={{ color: "#CCC" }}>
             Size
           </Title>
-          <Radio.Group defaultValue="a" buttonStyle="outline">
+          <Radio.Group defaultValue="a" buttonStyle="outline" onChange={onChange}>
             {sizes.length &&
               sizes.map(item => (
                 <Radio.Button
                   key={item.attribute_value_id}
-                  value={item.attribute_value_id}
+                  value={item.attribute_value}
                 >
                   {item.attribute_value}
                 </Radio.Button>
@@ -78,17 +76,6 @@ const Attributes: React.SFC<Props> = ({
       </>}
       {isProduct && (
         <>
-          <div className="oct-attributes oct-quantity">
-            <Title level={4} style={{ color: "#CCC" }}>
-              Quantity
-            </Title>
-            <InputNumber
-              min={1}
-              max={12}
-              defaultValue={2}
-              onChange={onChange}
-            />
-          </div>
           <Button
             type="danger"
             shape="round"

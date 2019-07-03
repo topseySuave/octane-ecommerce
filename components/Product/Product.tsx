@@ -19,6 +19,7 @@ import { IStoreProps } from "lib/types";
 import Head from "next/head";
 import Reviews from './Reviews';
 import "./Product.scss";
+import { RadioChangeEvent } from "antd/lib/radio";
 
 
 const { Content } = Layout;
@@ -50,6 +51,11 @@ const Product = ({
       if (item.product_id === currentProductItem.product_id) setInCart(true);
     });
   }, [currentProductItem]);
+
+  const onChange = (value: RadioChangeEvent) => {
+    console.log("changed ===> ", value);
+  };
+
 
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
@@ -93,6 +99,7 @@ const Product = ({
                       withAttributes
                       attributes={currentProductItem.attributes}
                       setInCart={setInCart}
+                      onChange={onChange}
                     />
                   </div>
                 </Col>
