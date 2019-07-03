@@ -28,7 +28,7 @@ export interface IStoreProps {
   getProductWithAppAttr: (appAttr: IDepartmentValues | ICategoryValues, page?: number) => void;
   getCartId: () => Function;
   getCartTotal: () => Function;
-  addToCart: (product?: IProduct) => Function;
+  addToCart: (product?: IProduct, attributes?: string) => Function;
   getCurrentProductItem: (pid: number) => Function;
   saveForLater: (itemId: number) => Function;
   getProductAttributes: (pid: number) => Function;

@@ -109,14 +109,14 @@ export const getSavedItems = () => {
   };
 };
 
-export const addToCart = (productData: IProduct) => {
+export const addToCart = (productData: IProduct, attributes: string) => {
   return (dispatch: Dispatch) => {
     dispatch({ type: ADD_TO_CART_LOADING });
     if (localStorage.getItem('cart_id')) {
       return axios.post(`${API_PREFIX}/shoppingcart/add`, {
         cart_id: localStorage.getItem('cart_id'),
         product_id: productData.product_id,
-        attributes: productData.name
+        attributes
       })
       .then(({ data }: any) => {
         dispatch({ type: ADD_TO_CART_SUCCESS, data });

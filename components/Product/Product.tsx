@@ -52,11 +52,6 @@ const Product = ({
     });
   }, [currentProductItem]);
 
-  const onChange = (value: RadioChangeEvent) => {
-    console.log("changed ===> ", value);
-  };
-
-
   return (
     <Content style={{ marginTop: DISTANCE_FROM_TOP + LINE_HEIGHT }}>
       <Head>
@@ -99,7 +94,6 @@ const Product = ({
                       withAttributes
                       attributes={currentProductItem.attributes}
                       setInCart={setInCart}
-                      onChange={onChange}
                     />
                   </div>
                 </Col>
