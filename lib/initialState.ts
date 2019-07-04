@@ -30,7 +30,6 @@ export default {
       attributes: [],
       reviews: []
     },
-    orders: [],
     shippingRegions: []
   },
   auth: {

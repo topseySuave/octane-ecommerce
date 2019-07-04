@@ -240,9 +240,9 @@ export const getShippingRegions = () => {
   };
 };
 
-export const getOrders = (orderId: number) => {
+export const getOrders = () => {
   return (dispatch: Dispatch) => {
-    axios.get(`${API_PREFIX}/orders/${orderId}`)
+    axios.get(`${API_PREFIX}/orders/inCustomer`, { headers })
     .then(({ data }: any) => {
       dispatch({ type: GET_ORDERS_SUCCESSFUL, data });
     });

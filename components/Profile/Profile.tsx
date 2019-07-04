@@ -36,6 +36,7 @@ interface Props {
   updateUserData: (value: any) => void;
   getSavedItems: () => void;
   getShippingRegions: () => void;
+  getOrders: () => void;
 }
 
 const Profile: React.SFC<Props> = ({
@@ -61,7 +62,7 @@ const Profile: React.SFC<Props> = ({
     updateUserData(newFormInput);
   };
 
-  const { savedItems, shippingRegions, orders } = productsReducer;
+  const { savedItems, shippingRegions } = productsReducer;
 
   useEffect(() => {
     if (isWindows && getUserData().accessToken === false) Router.push("/signin");
@@ -84,9 +85,6 @@ const Profile: React.SFC<Props> = ({
             </TabPane>
             <TabPane tab="Account/Shipping Address" key="2">
               <ShippingForm shippingRegions={shippingRegions} />
-            </TabPane>
-            <TabPane tab="My Orders" key="3">
-              <Orders orders={orders} />
             </TabPane>
             <TabPane tab="Saved for Later" key="4">
               <SavedItems items={savedItems} />

@@ -60,7 +60,6 @@ export interface IProductsReducer {
     loading: Boolean;
     cartId: string;
   };
-  orders: Array<IProduct>;
   currentProductItem: IProduct;
   shippingRegions: Array<{}>;
 }
