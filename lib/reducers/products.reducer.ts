@@ -96,8 +96,7 @@ export default (state = initialState.products, action: any) => {
           ...state.cart,
           totalAmount: '00.00',
           items: [],
-          loading: false,
-          paymentMade: true
+          loading: false
         };
       return { ...state };
     default:

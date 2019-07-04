@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { API_PREFIX, ADD_USER_SUCCESS, ADD_USER_LOADING, ADD_USER_ERROR, ADD_EXISTING_USER } from 'lib/constants';
 import { ErrResponse } from 'lib/types';
-import { Dispatch } from 'react';
+import { Dispatch } from 'redux';
 import { openNotificationWithIcon, getUserData, headers } from 'lib/utils';
 
 export const signInUser = (userData: any) => {
   const user = { email: userData.email, password: userData.password };
-  return (dispatch: Dispatch<{}>) => {
+  return (dispatch: Dispatch) => {
     dispatch({ type: ADD_USER_LOADING });
     axios.post(`${API_PREFIX}/customers/login`, user)
     .then(({ data }: any) => {
@@ -28,7 +28,7 @@ export const signInUser = (userData: any) => {
 
 export const signUpUser = (userData: any) => {
   const user = { email: userData.email, name: userData.name, password: userData.password };
-  return (dispatch: Dispatch<{}>) => {
+  return (dispatch: Dispatch) => {
     dispatch({ type: ADD_USER_LOADING });
     axios.post(`${API_PREFIX}/customers`, user)
     .then(({ data }: any) => {
@@ -49,7 +49,7 @@ export const signUpUser = (userData: any) => {
 };
 
 export const addSignedInUser = () => {
-  return (dispatch: Dispatch<{}>) => {
+  return (dispatch: Dispatch) => {
     if (getUserData().accessToken) {
       dispatch({ type: ADD_EXISTING_USER, data: getUserData() });
     }
@@ -57,7 +57,7 @@ export const addSignedInUser = () => {
 };
 
 export const updateUserData = (value: any, token: string) => {
-  return (dispatch: Dispatch<{}>) => {
+  return (dispatch: Dispatch) => {
     console.log('values ===> ', value);
     axios.put(`${API_PREFIX}/customer?token=${token.split(' ')[1]}`, value, { headers })
     .then(({ data }: any) => {

@@ -25,14 +25,13 @@ const Cart = ({
         `Payment of ${cart.totalAmount}`,
         parseInt(cart.totalAmount) * 100
       );
+      openNotificationWithIcon("success", "payment has been made");
     }
   };
 
   React.useEffect(() => {
     !cart.totalAmount && getCartTotal();
-    cart.paymentMade &&
-      openNotificationWithIcon("success", "payment has been made");
-  }, [cart.paymentMade]);
+  }, []);
 
   const onOpen = () => {
     !orderId && getOrderId();
