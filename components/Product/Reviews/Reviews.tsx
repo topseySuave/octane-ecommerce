@@ -11,7 +11,7 @@ const Reviews = ({ reviews }: Props) => {
       return {
         actions: [<Rate disabled defaultValue={review.rating} />],
         author: review.name,
-        avatar: `https://source.unsplash.com/100x100/?${review.review}`,
+        avatar: `https://picsum.photos/id/${Math.ceil(Math.random() * 99)}/100/100`,
         content: (<p>{review.review}</p>),
         datetime: (
           <Tooltip

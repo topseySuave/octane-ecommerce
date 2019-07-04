@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 
 const SignUp = () => {
   useEffect(() => {
-    if (isWindows && getUserData().accessToken) Router.push('/shop');
+    if (isWindows && getUserData().accessToken !== false) Router.push('/shop');
   }, []);
 
   return (

@@ -31,6 +31,7 @@ export default {
       reviews: []
     },
     orders: [],
+    shippingRegions: []
   },
   auth: {
     user: {},

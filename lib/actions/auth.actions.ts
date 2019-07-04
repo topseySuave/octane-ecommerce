@@ -78,7 +78,7 @@ export const updateUserData = (value: any) => {
       .put(`${API_PREFIX}/customer`, value, { headers })
       .then(({ data }: any) => {
         dispatch({ type: UPDATE_USER_SUCCESS, data });
-        return openNotificationWithIcon('success', 'Account Updated');
+        return openNotificationWithIcon("success", "Account Updated");
       })
       .catch(err => {
         console.log(err);

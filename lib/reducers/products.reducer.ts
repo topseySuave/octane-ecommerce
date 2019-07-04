@@ -16,7 +16,10 @@ import {
   SET_SAVED_ITEMS_SUCCESS,
   ADD_PRODUCT_ATTRIBUTES,
   ADD_PRODUCT_REVIEWS,
-  GET_ORDERS_SUCCESSFUL
+  GET_ORDERS_SUCCESSFUL,
+  GET_SHIPPING_REGION,
+  PAYMENT_WAS_SUCCESSFUL,
+  GET_ORDER_ID
 } from "lib/constants";
 
 export default (state = initialState.products, action: any) => {
@@ -87,6 +90,18 @@ export default (state = initialState.products, action: any) => {
       };
     case GET_ORDERS_SUCCESSFUL:
       return { ...state, orders: action.data };
+    case GET_SHIPPING_REGION:
+      return { ...state, shippingRegions: action.data };
+    case GET_ORDER_ID:
+      return { ...state, ...action.data };
+    case PAYMENT_WAS_SUCCESSFUL:
+        state.cart = {
+          ...state.cart,
+          totalAmount: '00.00',
+          items: [],
+          loading: false
+        };
+      return { ...state };
     default:
       return state;
   }

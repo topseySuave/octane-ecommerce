@@ -6,12 +6,15 @@ import Orders from "./Orders";
 import "./Profile.scss";
 import SavedItems from "./SavedItems";
 import ShippingForm from "./ShippingForm";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUserData } from "lib/utils";
 import Router from "next/router";
 import connectComponent from "lib/connectComponents";
 import { updateUserData } from "lib/actions/auth.actions";
-import { getSavedItems } from "lib/actions/products.actions";
+import {
+  getSavedItems,
+  getShippingRegions
+} from "lib/actions/products.actions";
 import { IProductsReducer } from "lib/types";
 
 const { Title } = Typography;
@@ -32,6 +35,7 @@ interface Props {
   productsReducer: IProductsReducer;
   updateUserData: (value: any) => void;
   getSavedItems: () => void;
+  getShippingRegions: () => void;
 }
 
 const Profile: React.SFC<Props> = ({
@@ -57,14 +61,12 @@ const Profile: React.SFC<Props> = ({
     updateUserData(newFormInput);
   };
 
-  const { savedItems, orders } = productsReducer;
+  const { savedItems, shippingRegions, orders } = productsReducer;
 
   useEffect(() => {
-    /**
-     * If the use data does not exist we want to send the user to the shop page
-     */
-    if (isWindows && !getUserData().accessToken) Router.push("/shop");
+    if (isWindows && getUserData().accessToken === false) Router.push("/signin");
     getSavedItems();
+    getShippingRegions();
   }, []);
 
   return (
@@ -81,7 +83,7 @@ const Profile: React.SFC<Props> = ({
               />
             </TabPane>
             <TabPane tab="Account/Shipping Address" key="2">
-              <ShippingForm />
+              <ShippingForm shippingRegions={shippingRegions} />
             </TabPane>
             <TabPane tab="My Orders" key="3">
               <Orders orders={orders} />
@@ -101,4 +103,8 @@ const Profile: React.SFC<Props> = ({
   );
 };
 
-export default connectComponent(Profile, { updateUserData, getSavedItems });
+export default connectComponent(Profile, {
+  updateUserData,
+  getSavedItems,
+  getShippingRegions
+});

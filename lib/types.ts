@@ -62,6 +62,7 @@ export interface IProductsReducer {
   };
   orders: Array<IProduct>;
   currentProductItem: IProduct;
+  shippingRegions: Array<{}>;
 }
 
 // Department set
