@@ -42,6 +42,15 @@ const LayoutHeader = React.memo((props: any) => {
               </a>
             </Link>
           </Menu.Item>
+          <Menu.Item key="2">
+            <Link prefetch href="/signout">
+              <a>
+                <Icon type="logout" className="signup" />
+                {"   "}
+                Signout
+              </a>
+            </Link>
+          </Menu.Item>
         </Menu>
       );
     }
@@ -168,6 +177,7 @@ const LayoutHeader = React.memo((props: any) => {
                     getOrderId={props.getOrderId}
                     orderId={orderId}
                     makePayment={props.makePayment}
+                    getCartTotal={props.getCartTotal}
                   />
                 );
               }}

@@ -9,7 +9,7 @@ import Router from 'next/router';
 
 const SignIn = () => {
   useEffect(() => {
-    if (isWindows && getUserData().accessToken) Router.push('/shop');
+    if (isWindows && getUserData().accessToken !== false) Router.push('/shop');
   }, []);
 
   return (

@@ -69,7 +69,7 @@ const Profile: React.SFC<Props> = ({
   const { savedItems, shippingRegions } = productsReducer;
 
   useEffect(() => {
-    if (isWindows && !getUserData().accessToken) Router.push("/shop");
+    if (isWindows && getUserData().accessToken === false) Router.push("/signin");
     getSavedItems();
     getShippingRegions();
   }, []);

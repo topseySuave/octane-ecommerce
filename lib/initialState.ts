@@ -25,6 +25,7 @@ export default {
       error: {},
       loading: false,
       cartId: '',
+      paymentMade: false,
     },
     currentProductItem: {
       attributes: [],

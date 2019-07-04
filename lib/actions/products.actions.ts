@@ -265,24 +265,20 @@ export const getOrderId = () => {
   };
 };
 
-export const paymentSuccessFull = () => (dispatch: any) =>
-  dispatch({ type: PAYMENT_WAS_SUCCESSFUL });
-
 export const makePayment = (
   stripeToken: string,
   order_id: number,
   description: string,
   amount: number
 ): Function => {
-  const params = { stripeToken: "pk_test_lCTZL2Kh1ZtWtXxv5J5sxSbb00PEfenxGC", order_id, description, amount };
-  console.log('params ===> ', params);
+  const params = { stripeToken, order_id, description, amount };
   return (dispatch: Dispatch) => {
     axios
       .post(`${API_PREFIX}/stripe/charge`, params, { headers })
       .then(({ data }: any) => {
-        console.log('data ====> ', data);
-        dispatch({ type: PAYMENT_WAS_SUCCESSFUL });
+        if(data.status === 'succeeded') return dispatch({ type: PAYMENT_WAS_SUCCESSFUL });
+        return openNotificationWithIcon("error", "payment was not made");
       })
-      .catch(err => console.log(err));
+      .catch(() => openNotificationWithIcon("error", "payment was not made"));
   };
 };

@@ -97,6 +97,7 @@ export default (state = initialState.products, action: any) => {
           totalAmount: '00.00',
           items: [],
           loading: false,
+          paymentMade: true
         };
       return { ...state };
     default:

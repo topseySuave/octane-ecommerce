@@ -3,6 +3,7 @@ import ProductCardHorizontal from "components/ui/ProductCard/ProductCardHorizont
 import Checkout from "components/StripeForm";
 import React from "react";
 import { openNotificationWithIcon } from "lib/utils";
+import _ from "lodash";
 
 const { Title } = Typography;
 
@@ -12,21 +13,26 @@ const Cart = ({
   onClose,
   getOrderId,
   orderId,
-  makePayment
+  makePayment,
+  getCartTotal
 }: any) => {
-  const stripeKey = "pk_test_lCTZL2Kh1ZtWtXxv5J5sxSbb00PEfenxGC";
+  const stripeKey = "pk_test_NcwpaplBCuTL6I0THD44heRe";
   const onToken = (token: any) => {
     if (token.created && token.id && token.card.cvc_check === "pass") {
-      console.log("token ====. ", token);
       makePayment(
         token.id,
         orderId,
         `Payment of ${cart.totalAmount}`,
-        parseFloat(cart.totalAmount)
+        parseInt(cart.totalAmount) * 100
       );
-      return openNotificationWithIcon("success", "payment has been made");
     }
   };
+
+  React.useEffect(() => {
+    !cart.totalAmount && getCartTotal();
+    cart.paymentMade &&
+      openNotificationWithIcon("success", "payment has been made");
+  }, [cart.paymentMade]);
 
   const onOpen = () => {
     !orderId && getOrderId();
@@ -35,14 +41,13 @@ const Cart = ({
   return (
     <>
       <Title level={3}>{title}</Title>
-      {cart.items.length ? (
+      {cart.items.length ?
         cart.items.map((item: any, index: number) => (
           <ProductCardHorizontal key={index} productDetail={item} />
         ))
-      ) : (
-        <Empty />
-      )}
-      {cart.items.length && (
+      : <Empty />
+      }
+      {!_.isEmpty(cart.items) && (
         <>
           <Title level={3}>{`Cart-Total: $${cart.totalAmount}`}</Title>
           <div
