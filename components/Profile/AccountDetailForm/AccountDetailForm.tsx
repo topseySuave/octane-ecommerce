@@ -17,7 +17,7 @@ const AccountDetailForm: React.SFC<Props> = ({
   loading
 }) => {
   if (!user.customer) return <div />;
-  console.log(user.customer);
+
   const initialState = {
     name: user.customer.name || "",
     email: user.customer.email || "",
