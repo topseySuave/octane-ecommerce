@@ -2,15 +2,14 @@ import { Button, Card, Layout, Tabs, Typography } from "antd";
 import { DISTANCE_FROM_TOP, LINE_HEIGHT, isWindows } from "lib/constants";
 import Link from "next/link";
 import AccountDetailForm from "./AccountDetailForm";
-import Orders from "./Orders";
 import "./Profile.scss";
 import SavedItems from "./SavedItems";
 import ShippingForm from "./ShippingForm";
 import { useEffect } from "react";
-import { getUserData } from "lib/utils";
+import { getUserData, openNotificationWithIcon } from "lib/utils";
 import Router from "next/router";
 import connectComponent from "lib/connectComponents";
-import { updateUserData } from "lib/actions/auth.actions";
+import { updateUserData, updateUserAddress } from "lib/actions/auth.actions";
 import {
   getSavedItems,
   getShippingRegions
@@ -37,28 +36,34 @@ interface Props {
   getSavedItems: () => void;
   getShippingRegions: () => void;
   getOrders: () => void;
+  updateUserAddress: (values: any) => void;
 }
 
 const Profile: React.SFC<Props> = ({
   productsReducer,
   authReducer: { user, loading },
   updateUserData,
-  getSavedItems
+  updateUserAddress,
+  getSavedItems,
+  getShippingRegions
 }) => {
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const input = e.target;
-    const newFormInput = {
-      name: input.username.value || null,
-      email: input.email.value || null,
-      dayPhone: input.dayPhone.value || null,
-      evePhone: input.evePhone.value || null,
-      modPhone: input.mobPhone.value || null
-    };
+  const handleAccountSubmit = (inputs: any) => {
+
     /**
      * We are getting an access UnAuthorized and would require a fix from turing.
      */
-    updateUserData(newFormInput);
+    updateUserData(inputs);
+  };
+
+  /**
+   * handling the shipping address submittion
+   */
+  const handleAddressSubmit = (inputs: any) => {
+    if (!inputs.shipping_region_id && !inputs.country) return openNotificationWithIcon('warning', 'Please input the country and shipping region');
+    /**
+     * we submit the form if all fields are specified
+     */
+    updateUserAddress(inputs);
   };
 
   const { savedItems, shippingRegions } = productsReducer;
@@ -79,11 +84,16 @@ const Profile: React.SFC<Props> = ({
               <AccountDetailForm
                 user={user}
                 loading={loading}
-                handleSubmit={handleSubmit}
+                handleSubmit={handleAccountSubmit}
               />
             </TabPane>
             <TabPane tab="Account/Shipping Address" key="2">
-              <ShippingForm shippingRegions={shippingRegions} />
+              <ShippingForm
+                user={user}
+                loading={loading}
+                shippingRegions={shippingRegions}
+                handleSubmit={handleAddressSubmit}
+              />
             </TabPane>
             <TabPane tab="Saved for Later" key="4">
               <SavedItems items={savedItems} />
@@ -102,6 +112,7 @@ const Profile: React.SFC<Props> = ({
 
 export default connectComponent(Profile, {
   updateUserData,
+  updateUserAddress,
   getSavedItems,
   getShippingRegions
 });

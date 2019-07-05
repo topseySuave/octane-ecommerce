@@ -85,3 +85,19 @@ export const updateUserData = (value: any) => {
       });
   };
 };
+
+export const updateUserAddress = (value: any) => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: ADD_USER_LOADING });
+    axios
+      .put(`${API_PREFIX}/customers/address`, value, { headers })
+      .then(({ data }: any) => {
+        dispatch({ type: UPDATE_USER_SUCCESS, data });
+        return openNotificationWithIcon("success", "User Address Updated successfully");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
