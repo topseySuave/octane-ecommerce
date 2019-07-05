@@ -53,8 +53,7 @@ const Profile: React.SFC<Props> = ({
       email: input.email.value || null,
       dayPhone: input.dayPhone.value || null,
       evePhone: input.evePhone.value || null,
-      modPhone: input.mobPhone.value || null,
-      password: "gabmicah"
+      modPhone: input.mobPhone.value || null
     };
     /**
      * We are getting an access UnAuthorized and would require a fix from turing.
